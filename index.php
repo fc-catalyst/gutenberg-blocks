@@ -12,7 +12,9 @@ defined( 'ABSPATH' ) || exit;
 
 // include all gutenberg blocks from surrounding dirs, whicn don't start with --
 foreach ( scandir( __DIR__ ) as $v ) {
-    $incl = __DIR__ . '/' . $v . '/index.php';
-    if ( $v === '.' || $v === '..' || !is_file( $incl ) || substr( $v, 0, 2 ) === '--' ) { continue; }
-    include_once( $incl );
+  if ( $v == '.' || $v == '..' || $v[0] === '-' ) { continue; }
+  @include_once( __DIR__ . '/' . $v . '/index.php' );
 }
+
+// list of controls
+// https://developer.wordpress.org/block-editor/reference-guides/components/text-control/

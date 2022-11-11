@@ -1,22 +1,23 @@
 <?php
 
-$block_name = 'tile-team-member'; // basename( __DIR__ )
+$block_name = basename( __DIR__ );
 
 add_action( 'init', function() use ( $block_name ) {
 
     $print_block = function( $props, $content = null ) use ( $block_name ) {
+
+        $tag = empty( $props['url'] ) ? ['span'] : ['a', 'href="'.$props['url'].'"'];
+
         ob_start();
 
         ?>
-        <div class="fcp-tile-team-member">
-            <div class="fcp-tile-team-member-icon">
+        <div class="fcp-<?php echo $block_name ?>">
+            <div class="fcp-<?php echo $block_name ?>-image">
                 <?php echo wp_get_attachment_image( $props['mediaID'], 'full' ) ?>
             </div>
-            <div class="fcp-tile-team-member-header">
-                <?php echo !empty( $props['headlinePre'] ) ? '<div class="fcp-tile-team-member-preheadlilne">'.$props['headlinePre'].'</div>' : '' ?>
-                <?php echo !empty( $props['headline'] ) ? '<h2>'.$props['headline'].'</h2>' : '' ?>
+            <div class="fcp-<?php echo $block_name ?>-header">
+                <<?php echo implode( ' ' , $tag ) ?>><?php echo $props['name'] ?></<?php echo $tag[0] ?>>
             </div>
-            <?php echo( $content ) ?>
         </div>
         <?php
 
