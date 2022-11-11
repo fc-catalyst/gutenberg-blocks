@@ -13,8 +13,14 @@
 }
 
 .fcp-group-tiles [data-type] {
-    width:calc( 33.333% - 6.667px );
+    width:100%;
 }
 .fcp-group-tiles [data-rows="2"] [data-type] {
     width:calc( 50% - 10px );
+}
+.fcp-group-tiles [data-rows="3"] [data-type],
+.fcp-group-tiles [data-rows="4"] [data-type],
+.fcp-group-tiles [data-rows="5"] [data-type],
+.fcp-group-tiles [data-rows="6"] [data-type] {
+    width:calc( 33.333% - 10px );
 }

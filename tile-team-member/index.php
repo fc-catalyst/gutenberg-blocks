@@ -15,15 +15,17 @@ add_action( 'init', function() use ( $block_name ) {
         ob_start();
 
         ?>
-        <div class="fcp-<?php echo $block_name ?>">
-            <<?php echo implode( ' ' , $tag ) ?> class="fcp-<?php echo $block_name ?>-link">
-                <div class="fcp-<?php echo $block_name ?>-content"><?php
-                    echo !empty( $props['name'] ) ? '<span>'.$props['name'].'</span>' : '';
-                    echo !empty( $props['description'] ) ? '<p>'.$props['description'].'</p>' : '';
-                ?></div>
-            </<?php echo $tag[0] ?>>
-            <div class="fcp-<?php echo $block_name ?>-image">
-                <?php echo wp_get_attachment_image( $props['mediaID'], !empty( $props['mediaSize'] ) ? $props['mediaSize'] : '' ) ?>
+        <div>
+            <div class="fcp-<?php echo $block_name ?>"<?php echo !empty( $props['height'] ) ? 'style="padding-bottom:'.$props['height'].'%"' : '' ?>>
+                <<?php echo implode( ' ' , $tag ) ?> class="fcp-<?php echo $block_name ?>-link">
+                    <div class="fcp-<?php echo $block_name ?>-content"><?php
+                        echo !empty( $props['name'] ) ? '<span>'.$props['name'].'</span>' : '';
+                        echo !empty( $props['description'] ) ? '<p>'.$props['description'].'</p>' : '';
+                    ?></div>
+                </<?php echo $tag[0] ?>>
+                <div class="fcp-<?php echo $block_name ?>-image">
+                    <?php echo wp_get_attachment_image( $props['mediaID'], !empty( $props['mediaSize'] ) ? $props['mediaSize'] : '' ) ?>
+                </div>
             </div>
         </div>
         <?php

@@ -9,7 +9,7 @@
     box-sizing:border-box;
     color:var(--color-sub);
     overflow:hidden;
-    padding-bottom:120%;
+    padding-bottom:110%;
 }
 
 .fcp-tile-team-member-image,

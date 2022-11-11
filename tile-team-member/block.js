@@ -5,6 +5,7 @@
     const TextControl = wp.components.TextControl;
     const SelectControl = wp.components.SelectControl;
     const Spacer = wp.components.__experimentalSpacer;
+    const RangeControl = wp.components.RangeControl;
 
 	wp.blocks.registerBlockType( 'fcp-gutenberg/tile-team-member', {
 		title: 'FCP Tile Team Member',
@@ -35,6 +36,9 @@
 			},
 			url: {
 				type: 'string'
+			},
+            height: {
+				type: 'number'
 			}
 		},
 
@@ -61,7 +65,7 @@
             
 			return el( 'div', {},
 
-                el( 'div', { className: 'fcp-tile-team-member' },
+                el( 'div', { className: 'fcp-tile-team-member', style: { paddingBottom: ( props.attributes.height || 110 ) + '%' } },
                     el( 'div', { className: 'fcp-tile-team-member-link' },
                         el( 'div', { className: 'fcp-tile-team-member-content' },
                             props.attributes.name &&
@@ -148,6 +152,15 @@
                                     onChange: function( value ) {
                                         props.setAttributes( { url: value } );
                                     }
+                                }),
+                                el( RangeControl, {
+                                    label: 'Height in % of width',
+                                    value: props.attributes.height || 110,
+                                    onChange: function( value ) {
+                                        props.setAttributes( { height: value } );
+                                    },
+                                    min: 70,
+                                    max: 150
                                 })
                             )
                         )
@@ -162,8 +175,10 @@
 })();
 
 
-// ++group, change html & style, height, color1, color2, subheadline, image size
+// ++groups set up / style properly, color1, color2
+    //++maybe set primaty & secondary colors to group to ingerit by tiles
+        //++unique ids
 // ++class name from index.php
-// ++default image
 // ++filter the blocks, fed to the editor.js by index.php
+// ++default image
 // ++add background image icon to empty content
