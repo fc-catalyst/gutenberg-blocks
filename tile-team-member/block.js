@@ -3,6 +3,7 @@
 	const el = wp.element.createElement;
     const MediaUpload = wp.blockEditor.MediaUpload;
     const TextControl = wp.components.TextControl;
+    const SelectControl = wp.components.SelectControl;
     const Spacer = wp.components.__experimentalSpacer;
 
 	wp.blocks.registerBlockType( 'fcp-gutenberg/tile-team-member', {
@@ -17,7 +18,19 @@
 			mediaURL: {
 				type: 'string'
 			},
+			mediaThumbnailURL: {
+				type: 'string'
+			},
+            mediaSize: {
+                type: 'string'
+            },
+            mediaSizes: {
+                type: 'array'
+            },
 			name: {
+				type: 'string'
+			},
+            description: {
 				type: 'string'
 			},
 			url: {
@@ -29,27 +42,38 @@
 
 			const onSelectImage = function( media ) {
 				return props.setAttributes( {
-					mediaURL: media.sizes && media.sizes.thumbnail ? media.sizes.thumbnail.url : media.url,
-					mediaID: media.id
+					mediaURL: media.sizes?.thumbnail?.url || media.url,
+                    mediaThumbnailURL: media.sizes?.thumbnail?.url || media.url,
+					mediaID: media.id,
+                    mediaSizes: Object.keys( media.sizes ).map( v => { return { label: v, value: v, url: media.sizes[v].url } } ),
+                    mediaSize: ''
 				});
 			};
             const onRemoveImage = function() {
 				return props.setAttributes( {
 					mediaURL: '',
-					mediaID: ''
+                    mediaThumbnailURL: '',
+					mediaID: '',
+                    mediaSizes: [],
+                    mediaSize: ''
 				});
             };
             
 			return el( 'div', {},
 
                 el( 'div', { className: 'fcp-tile-team-member' },
+                    el( 'div', { className: 'fcp-tile-team-member-link' },
+                        el( 'div', { className: 'fcp-tile-team-member-content' },
+                            props.attributes.name &&
+                            el( 'span', {}, props.attributes.name ),
+                            props.attributes.description &&
+                            el( 'p', {}, props.attributes.description )
+                        )
+                    ),
                     el( 'div', { className: 'fcp-tile-team-member-image' },
-                    props.attributes.mediaID &&
-                        el( 'img', { src: props.attributes.mediaURL } ),
-                    ),
-                    el( 'div', { className: 'fcp-tile-team-member-header' },
-                        props.attributes.name
-                    ),
+                        props.attributes.mediaID &&
+                        el( 'img', { src: props.attributes.mediaURL || props.attributes.mediaThumbnailURL } ),
+                    )
                 ),
             
                 el( wp.blockEditor.InspectorControls, {},
@@ -70,7 +94,7 @@
                                                     onClick: obj.open,
                                                 },
                                                 el( Spacer, { marginBottom: 5 } ),
-                                                el( 'img', { src: props.attributes.mediaURL } ),
+                                                el( 'img', { src: props.attributes.mediaThumbnailURL } ),
                                                 el( Spacer, { marginBottom: 5 } )
                                             ),
                                             el( wp.components.PanelRow, {},
@@ -88,7 +112,18 @@
                                                     },
                                                     'Remove'
                                                 )
-                                            )
+                                            ),
+                                            !!props.attributes.mediaSizes?.length &&
+                                            el( SelectControl, {
+                                                value: props.attributes.mediaSize,
+                                                onChange: function( value ) {
+                                                    props.setAttributes( {
+                                                        mediaSize: value,
+                                                        mediaURL: props.attributes.mediaSizes.find( v => v.value === value )?.url
+                                                    });
+                                                },
+                                                options: [{ label: 'Choose the size', value: '' }].concat( props.attributes.mediaSizes )
+                                            }),
                                         );
                                     }
                                 }),
@@ -98,6 +133,13 @@
                                     value: props.attributes.name ? props.attributes.name : '',
                                     onChange: function( value ) {
                                         props.setAttributes( { name: value } );
+                                    }
+                                }),
+                                el( TextControl, {
+                                    placeholder: 'About',
+                                    value: props.attributes.description ? props.attributes.description : '',
+                                    onChange: function( value ) {
+                                        props.setAttributes( { description: value } );
                                     }
                                 }),
                                 el( TextControl, {
@@ -118,3 +160,10 @@
 		}
 	} );
 })();
+
+
+// ++group, change html & style, height, color1, color2, subheadline, image size
+// ++class name from index.php
+// ++default image
+// ++filter the blocks, fed to the editor.js by index.php
+// ++add background image icon to empty content

@@ -5,27 +5,12 @@ $block_name = basename( __DIR__ );
 add_action( 'init', function() use ( $block_name ) {
 
     $print_block = function( $props, $content = null ) use ( $block_name ) {
-
-        $tag = empty( $props['url'] ) ? ['div'] : [
-                'a',
-                'href="'.esc_attr( $props['url'] ).'"',
-                'title="'.esc_attr( $props['name'] ).'"'
-        ];
-
         ob_start();
 
         ?>
-        <div class="fcp-<?php echo $block_name ?>">
-            <<?php echo implode( ' ' , $tag ) ?> class="fcp-<?php echo $block_name ?>-link">
-                <div class="fcp-<?php echo $block_name ?>-content"><?php
-                    echo !empty( $props['name'] ) ? '<span>'.$props['name'].'</span>' : '';
-                    echo !empty( $props['description'] ) ? '<p>'.$props['description'].'</p>' : '';
-                ?></div>
-            </<?php echo $tag[0] ?>>
-            <div class="fcp-<?php echo $block_name ?>-image">
-                <?php echo wp_get_attachment_image( $props['mediaID'], !empty( $props['mediaSize'] ) ? $props['mediaSize'] : '' ) ?>
+            <div class="fcp-<?php echo $block_name ?>" data-rows="<?php echo $props['columns'] ? $props['columns'] : 2 ?>">
+                <?php echo( $content ) ?>
             </div>
-        </div>
         <?php
 
         $content = ob_get_contents();
@@ -45,7 +30,7 @@ add_action( 'init', function() use ( $block_name ) {
         ['wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components'],
         filemtime( plugin_dir_path( __FILE__ ) . 'block.js' )
     );
-
+    
     wp_register_style(
         'fcp-' . $block_name . '-editor',
         plugins_url( 'editor.css', __FILE__ ),

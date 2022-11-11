@@ -1,18 +1,57 @@
 .fcp-tile-team-member {
-    --color-main:#5d9783;
-    --color-sub:#86b1a2;
-    --color-neut:#bfbfbf;
-    --color-back:#fff;
+    --color-main:#ab9b92;
+    --color-sub:#ffffff;
 }
 
-.fcp-tile-team-member,
-.fcp-tile-team-member-image,
-.fcp-tile-team-member-title {
-    border:3px solid var(--color-main);
+.fcp-tile-team-member {
+    position:relative;
+    border:1px solid var(--color-main);
     box-sizing:border-box;
-    border-radius:12px;
-    padding:24px;
+    color:var(--color-sub);
+    overflow:hidden;
+    padding-bottom:120%;
+}
+
+.fcp-tile-team-member-image,
+.fcp-tile-team-member-link,
+.fcp-tile-team-member-content {
+    position:absolute;
+    top:0; right:0; bottom:0; left:0;
+    z-index:0;
+}
+.fcp-tile-team-member-link {
+    z-index:1;
+}
+
+.fcp-tile-team-member-image img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center top;
+}
+
+.fcp-tile-team-member-content {
+    top:auto;
 
     display:flex;
-    flex-wrap:wrap;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:12px;
+    box-sizing:border-box;
+    background-color:var(--color-main);
+    text-align:center;
+
+    text-decoration:none!important;
+    font-size:28px;
+    font-weight:100;
+    color:var(--color-sub)!important;
+}
+.fcp-tile-team-member-content:empty {
+    padding:0;
+}
+.fcp-tile-team-member-content p {
+    margin:20px 0 0!important;
+    padding:0!important;
+    font-size:70%;
 }
