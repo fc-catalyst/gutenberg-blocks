@@ -7,6 +7,10 @@
     const Spacer = wp.components.__experimentalSpacer;
     const RangeControl = wp.components.RangeControl;
 
+    const defaults = {
+        height: 110
+    };
+
 	wp.blocks.registerBlockType( 'fcp-gutenberg/tile-team-member', {
 		title: 'FCP Tile Team Member',
         icon: 'columns',
@@ -39,7 +43,13 @@
 			},
             height: {
 				type: 'number'
-			}
+			},
+            mainColor: {
+                type: 'string'
+            },
+            subColor: {
+                type: 'string'
+            }
 		},
 
 		edit: function( props ) {
@@ -62,10 +72,17 @@
                     mediaSize: ''
 				});
             };
+            const applyStyles = function() {
+                let styles = {};
+                styles.paddingBottom = ( props.attributes.height || defaults.height ) + '%';
+                styles['--color-main'] = props.attributes.mainColor || '';
+                styles['--color-sub'] = props.attributes.subColor || '';
+                return styles;
+            };
             
 			return el( 'div', {},
 
-                el( 'div', { className: 'fcp-tile-team-member', style: { paddingBottom: ( props.attributes.height || 110 ) + '%' } },
+                el( 'div', { className: 'fcp-tile-team-member', style: applyStyles() },
                     el( 'div', { className: 'fcp-tile-team-member-link' },
                         el( 'div', { className: 'fcp-tile-team-member-content' },
                             props.attributes.name &&
@@ -154,14 +171,58 @@
                                     }
                                 }),
                                 el( RangeControl, {
-                                    label: 'Height in % of width',
-                                    value: props.attributes.height || 110,
+                                    label: 'Height %',
+                                    value: props.attributes.height || defaults.height,
                                     onChange: function( value ) {
                                         props.setAttributes( { height: value } );
                                     },
                                     min: 70,
                                     max: 150
                                 })
+                            )
+                        ),
+                        el( wp.components.PanelBody, { title: 'Primary color', initialOpen: false, icon:
+                            el( wp.components.ColorIndicator, { colorValue: props.attributes.mainColor || '' } )
+                        },
+                            el( 'div', {},
+                                el( wp.components.ColorPicker, {
+                                    color: props.attributes.mainColor || '',
+                                    enableAlpha: true,
+                                    onChange: function( value ) {
+                                        props.setAttributes( { mainColor: value } );
+                                    }
+                                }),
+                                props.attributes.mainColor &&
+                                el( wp.components.Button, {
+                                    className:'is-link is-destructive',
+                                    onClick: function() {
+                                        props.setAttributes( { mainColor: '' } );
+                                    }
+                                    },
+                                    'Clear'
+                                )
+                            )
+                        ),
+                        el( wp.components.PanelBody, { title: 'Secondary color', initialOpen: false, icon:
+                            el( wp.components.ColorIndicator, { colorValue: props.attributes.subColor || '' } )
+                        },
+                            el( 'div', {},
+                                el( wp.components.ColorPicker, {
+                                    color: props.attributes.subColor || '',
+                                    enableAlpha: true,
+                                    onChange: function( value ) {
+                                        props.setAttributes( { subColor: value } );
+                                    }
+                                }),
+                                props.attributes.subColor &&
+                                el( wp.components.Button, {
+                                    className:'is-link is-destructive',
+                                    onClick: function() {
+                                        props.setAttributes( { subColor: '' } );
+                                    }
+                                    },
+                                    'Clear'
+                                )
                             )
                         )
                     )
@@ -175,10 +236,5 @@
 })();
 
 
-// ++groups set up / style properly, color1, color2
-    //++maybe set primaty & secondary colors to group to ingerit by tiles
-        //++unique ids
-// ++class name from index.php
-// ++filter the blocks, fed to the editor.js by index.php
 // ++default image
 // ++add background image icon to empty content

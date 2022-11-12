@@ -1,7 +1,5 @@
 <?php
 
-$block_name = 'tile-brief'; // basename( __DIR__ )
-
 add_action( 'init', function() use ( $block_name ) {
 
     $print_block = function( $props, $content = null ) use ( $block_name ) {

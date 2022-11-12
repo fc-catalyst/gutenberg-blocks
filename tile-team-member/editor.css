@@ -1,9 +1,4 @@
 .fcp-tile-team-member {
-    --color-main:#ab9b92;
-    --color-sub:#ffffff;
-}
-
-.fcp-tile-team-member {
     position:relative;
     border:1px solid var(--color-main);
     box-sizing:border-box;
