@@ -1,10 +1,15 @@
 .fcp-tile-team-member {
+    --height:110%;
+    --color-main:#1e293b;
+    --color-sub:#ffffff;
+}
+.fcp-tile-team-member {
     position:relative;
     border:1px solid var(--color-main);
     box-sizing:border-box;
     color:var(--color-sub);
     overflow:hidden;
-    padding-bottom:110%;
+    padding-bottom:var(--height);
 }
 
 .fcp-tile-team-member-image,

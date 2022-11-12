@@ -10,11 +10,20 @@ add_action( 'init', function() use ( $block_name ) {
                 'title="'.esc_attr( $props['name'] ).'"'
         ];
 
+        $style = '';
+        if ( !empty( $props['height'] ) || !empty( $props['mainColor'] ) || !empty( $props['subColor'] ) ) {
+            $style .= ' style="'
+                .( !empty( $props['height'] ) ? '--height:'.$props['height'].'%;' : '' )
+                .( !empty( $props['mainColor'] ) ? '--color-main:'.$props['mainColor'].';' : '' )
+                .( !empty( $props['subColor'] ) ? '--color-sub:'.$props['subColor'].';' : '' )
+                .'"';
+        }
+
         ob_start();
 
         ?>
         <div>
-            <div class="fcp-<?php echo $block_name ?>"<?php echo !empty( $props['height'] ) ? 'style="padding-bottom:'.$props['height'].'%"' : '' ?>>
+            <div class="fcp-<?php echo $block_name ?>"<?php echo $style ?>>
                 <<?php echo implode( ' ' , $tag ) ?> class="fcp-<?php echo $block_name ?>-link">
                     <div class="fcp-<?php echo $block_name ?>-content"><?php
                         echo !empty( $props['name'] ) ? '<span>'.$props['name'].'</span>' : '';

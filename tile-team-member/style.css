@@ -1,15 +1,15 @@
 .fcp-tile-team-member {
-    --color-main:#ab9b92;
+    --height:110%;
+    --color-main:#1e293b;
     --color-sub:#ffffff;
 }
-
 .fcp-tile-team-member {
     position:relative;
     border:1px solid var(--color-main);
     box-sizing:border-box;
     color:var(--color-sub);
     overflow:hidden;
-    padding-bottom:110%;
+    padding-bottom:var(--height);
 }
 
 .fcp-tile-team-member-image,
@@ -22,7 +22,12 @@
 .fcp-tile-team-member-link {
     z-index:1;
 }
-
+.fcp-tile-team-member-image {
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cg fill='none' stroke='%23b3b3b3' stroke-width='.5'%3E%3Ccircle r='3.7' cy='4.3' cx='8' /%3E%3Cpath d='m 10,9 c -1.5,0.7 -2.8,0.7 -4,0 -3,0 -4.3,2.1 -4.4,3.9 v 1.22 c 0,0.8 0.6,1.4 1.4,1.4 H 13 c 0.8,0 1.4,-0.6 1.4,-1.4 v -1.2 c 0,-1.8 -1.7,-3.9 -4.4,-3.94 z' /%3E%3C/g%3E%3C/svg%3E");
+    background-size:32px;
+    background-repeat:no-repeat;
+    background-position:center;
+}
 .fcp-tile-team-member-image img {
     width:100%;
     height:100%;
@@ -58,14 +63,20 @@
 
 /* effects */
 a.fcp-tile-team-member-link {
-    transition:background-color 0.4s ease;
+    transition:background-color 0.5s 0.2s ease;
 }
 a .fcp-tile-team-member-content {
     min-height:0;
     transition:min-height 0.4s ease, background-color 0.3s 0.1s ease;
 }
-a .fcp-tile-team-member-image {
-    transition:filter 0.4s ease;
+a .fcp-tile-team-member-content:empty {
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cg fill='%23b3b3b3' stroke='none'%3E%3Ccircle cy='3.25' cx='8' r='1.25' /%3E%3Ccircle r='1.25' cx='8' cy='7.75' /%3E%3Ccircle cy='12.25' cx='8' r='1.25' /%3E%3C/g%3E%3C/svg%3E");
+    background-size:32px;
+    background-repeat:no-repeat;
+    background-position:center center;
+}
+a + .fcp-tile-team-member-image {
+    transition:filter 0.5s ease;
 }
 a.fcp-tile-team-member-link:hover {
     background-color:var(--color-main);
@@ -73,7 +84,7 @@ a.fcp-tile-team-member-link:hover {
 a.fcp-tile-team-member-link:hover .fcp-tile-team-member-content {
     min-height:100%;
     background-color:transparent;
-    transition:min-height 0.4s ease, background-color 0.1s ease;
+    transition:min-height 0.5s ease-out, background-color 0.15s ease;
 }
 a.fcp-tile-team-member-link:hover + .fcp-tile-team-member-image {
     filter:blur(20px);

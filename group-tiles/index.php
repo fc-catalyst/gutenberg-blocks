@@ -3,10 +3,19 @@
 add_action( 'init', function() use ( $block_name ) {
 
     $print_block = function( $props, $content = null ) use ( $block_name ) {
+
+        $style = '';
+        if ( !empty( $props['mainColor'] ) || !empty( $props['subColor'] ) ) {
+            $style .= ' style="'
+                .( !empty( $props['mainColor'] ) ? '--color-main:'.$props['mainColor'].';' : '' )
+                .( !empty( $props['subColor'] ) ? '--color-sub:'.$props['subColor'].';' : '' )
+                .'"';
+        }
+
         ob_start();
 
         ?>
-            <div class="fcp-<?php echo $block_name ?>" data-rows="<?php echo $props['columns'] ? $props['columns'] : 2 ?>">
+            <div class="fcp-<?php echo $block_name ?>" data-rows="<?php echo $props['columns'] ? $props['columns'] : 2 ?>"<?php echo $style ?>>
                 <?php echo( $content ) ?>
             </div>
         <?php

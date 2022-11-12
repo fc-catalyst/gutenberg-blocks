@@ -1,4 +1,9 @@
 .fcp-group-tiles {
+    --color-main:#1e293b;
+    --color-sub:#ffffff;
+}
+
+.fcp-group-tiles {
     display:flex;
     flex-wrap:wrap;
     align-items:stretch;

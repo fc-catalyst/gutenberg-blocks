@@ -93,7 +93,11 @@
                     ),
                     el( 'div', { className: 'fcp-tile-team-member-image' },
                         props.attributes.mediaID &&
-                        el( 'img', { src: props.attributes.mediaURL || props.attributes.mediaThumbnailURL } ),
+                        el( 'img', { src: props.attributes.mediaURL || props.attributes.mediaThumbnailURL } ) ||
+                        el( 'img', {
+                                src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cg fill='none' stroke='%23b3b3b3' stroke-width='.1'%3E%3Ccircle r='3.7' cy='4.3' cx='8' /%3E%3Cpath d='m 10,9 c -1.5,0.7 -2.8,0.7 -4,0 -3,0 -4.3,2.1 -4.4,3.9 v 1.22 c 0,0.8 0.6,1.4 1.4,1.4 H 13 c 0.8,0 1.4,-0.6 1.4,-1.4 v -1.2 c 0,-1.8 -1.7,-3.9 -4.4,-3.94 z' /%3E%3C/g%3E%3C/svg%3E",
+                                style: { width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }
+                            } ),
                     )
                 ),
             
@@ -234,7 +238,3 @@
 		}
 	} );
 })();
-
-
-// ++default image
-// ++add background image icon to empty content
