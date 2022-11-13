@@ -31,6 +31,8 @@ add_action( 'init', function() use ( $block_name ) {
         'render_callback' => $print_block
     ] );
 
+    if ( !is_admin() ) { return; }
+
     wp_register_script(
         'fcp-' . $block_name . '-block',
         plugins_url( 'block.js', __FILE__ ),
