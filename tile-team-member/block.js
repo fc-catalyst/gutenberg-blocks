@@ -181,7 +181,7 @@
                                         props.setAttributes( { height: value } );
                                     },
                                     min: 70,
-                                    max: 150
+                                    max: 200
                                 })
                             )
                         ),

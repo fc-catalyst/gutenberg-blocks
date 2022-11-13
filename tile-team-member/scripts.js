@@ -6,6 +6,6 @@
 
     fcOnVisibleDo1( '.fcp-tile-team-member', function(el) {
         el.classList.remove( 'fcp-tile-team-member_hidden' );
-    }, -100, 200 );
+    }, -100, 100 );
 
 },300)}();

@@ -81,7 +81,7 @@ add_action( 'wp_enqueue_scripts', function() use ( $block_name ) { // ++add firs
     wp_enqueue_script( 'fcp-gutenberg-assets-fconvisibledo1' );
     wp_add_inline_script( 'fcp-gutenberg-assets-fconvisibledo1', ( function() {
         ob_start();
-        @include_once ( __DIR__ . '/../--assets/fcOnVisibleDo1.js' );
+        @include_once ( __DIR__ . '/../assets/fcOnVisibleDo1.js' );
         @include_once ( __DIR__ . '/scripts.js' );
         $content = ob_get_contents();
         ob_end_clean();

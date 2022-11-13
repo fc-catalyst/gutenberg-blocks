@@ -1,6 +1,8 @@
 .fcp-group-tiles {
     --color-main:#1e293b;
     --color-sub:#ffffff;
+    --font-big:28px;
+    --font-small:19px;
 }
 
 .fcp-group-tiles {
@@ -14,19 +16,19 @@
     width:100%;
 }
 .fcp-group-tiles[data-rows="2"] > * {
-    width:calc( 50% - 55px );
+    width:calc( 50% - 30px + 15px );
 }
 .fcp-group-tiles[data-rows="3"] > * {
-    width:calc( 33.333% - 55px );
+    width:calc( 33.333% - 30px + 10px );
 }
 .fcp-group-tiles[data-rows="4"] > * {
-    width:calc( 25% - 55px );
+    width:calc( 25% - 30px + 7.5px );
 }
 .fcp-group-tiles[data-rows="5"] > * {
-    width:calc( 20% - 55px );
+    width:calc( 20% - 30px + 6px );
 }
 .fcp-group-tiles[data-rows="6"] > * {
-    width:calc( 16.666% - 40px );
+    width:calc( 16.666% - 30px + 5px );
 }
 
 @media (max-width:991px) {

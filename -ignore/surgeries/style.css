@@ -1,0 +1,97 @@
+.fcp-surg-tile {
+    --main-color:#5d9783;
+}
+
+.fcp-surg-tile {
+    height:calc(100% - 45px);
+	margin-bottom:45px;
+    border:1px solid var(--main-color);
+    border-radius:30px;
+    padding:20px 20px 90px;
+    box-sizing:border-box;
+    position:relative;
+}
+
+.fcp-surg-tile-title {
+    display:inline-block;
+    min-width:100px;
+    margin:0 0 -18px;
+    padding:0 30px 15px 0!important;
+    position:relative;
+    left:-21px;
+    top:-38px;
+    background-color:#fff;
+    font-size:26px!important;
+    line-height:1.4;
+    font-weight:600!important;
+    text-transform:none;
+    letter-spacing:0;
+}
+
+.fcp-surg-tile-content p {
+    margin:0 0 14px;
+    padding:0;
+    font-size:14px;
+	font-weight:500;
+    line-height:1.4;
+	color:#000;
+}
+
+.fcp-surg-tile-content h1,
+.fcp-surg-tile-content h2,
+.fcp-surg-tile-content h3,
+.fcp-surg-tile-content h4,
+.fcp-surg-tile-content h5,
+.fcp-surg-tile-content h6 {
+    display:inline-block;
+    margin:20px 0 18px;
+    border-bottom:1px solid var(--main-color);
+    padding:0 0 7px!important;
+	/*font-family:'Montserrat', sans-serif!important;*/
+    font-size:14px!important;
+    line-height:1.4;
+    font-weight:700!important;
+    text-transform:none;
+    letter-spacing:0;
+    color:#111!important;
+}
+
+.fcp-surg-tile-content a {
+    text-decoration:none;
+	font-weight:600;
+    color:var(--main-color);
+}
+
+.fcp-surg-tile-link {
+    display:block;
+    width:100%;
+    margin:0;
+    padding:12px 18px 18px 12px;
+    box-sizing:border-box;
+    position:absolute;
+    left:0;
+    bottom:0;
+    text-align:right;
+    font-size:14px;
+    font-weight:600;
+    text-transform:uppercase;
+    text-decoration:none;
+    color:var(--main-color);
+}
+
+.fcp-surg-tile-link::after {
+    content:'';
+    display:inline-block;
+    width:8px;
+    height:8px;
+    margin-left:5px;
+    border:2px solid var(--main-color);
+    border-width:2px 2px 0px 0px;
+    border-radius:0px 4px 0px 0px;
+    transform:rotate(45deg);
+    
+}
+
+.flex-full-height-container {
+    align-items:stretch;
+}

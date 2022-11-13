@@ -1,7 +1,5 @@
 .fcp-tile-team-member {
     --height:110%;
-    --color-main:#1e293b;
-    --color-sub:#ffffff;
 }
 .fcp-tile-team-member {
     position:relative;
@@ -43,7 +41,7 @@
     text-align:center;
 
     text-decoration:none!important;
-    font-size:28px;
+    font-size:20px;
     font-weight:100;
     color:var(--color-sub)!important;
 }

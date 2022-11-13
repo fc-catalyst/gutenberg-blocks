@@ -1,0 +1,27 @@
+div[data-type="fcp-gutenberg/sequence"] {
+    border:2px solid #5d9783;
+    border-width:2px 0 0 2px;
+    padding:0 0 10px 10px;
+}
+div[data-type="fcp-gutenberg/sequence"]::before {
+    content:'';
+    display:block;
+    width:16px;
+    height:16px;
+    position:absolute;
+    left:-9px;
+    bottom:0;
+    border:2px solid #5d9783;
+    border-width:2px 0 0 2px;
+    transform:rotate(-135deg);
+}
+div[data-type="fcp-gutenberg/sequence"] h3 {
+    font-size:11px;
+    line-height:1;
+    color:#5d9783;
+}
+div[data-type="fcp-gutenberg/sequence"] *[role="textbox"] {
+    margin-bottom:15px;
+    border:1px dotted #ccc;
+    padding:3px 10px;
+}

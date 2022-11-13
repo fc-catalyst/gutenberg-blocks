@@ -1,7 +1,5 @@
 .fcp-tile-team-member {
     --height:110%;
-    --color-main:#1e293b;
-    --color-sub:#ffffff;
 }
 .fcp-tile-team-member {
     position:relative;
@@ -15,7 +13,7 @@
 .fcp-tile-team-member-image,
 .fcp-tile-team-member-link,
 .fcp-tile-team-member-content {
-    position:absolute;
+    position:absolute!important;
     top:0; right:0; bottom:0; left:0;
     z-index:0;
 }
@@ -37,7 +35,6 @@
 
 .fcp-tile-team-member-content {
     top:auto;
-
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -46,19 +43,20 @@
     box-sizing:border-box;
     background-color:var(--color-main);
     text-align:center;
-
-    text-decoration:none!important;
-    font-size:28px;
-    font-weight:100;
-    color:var(--color-sub)!important;
 }
 .fcp-tile-team-member-content:empty {
     padding:0;
 }
+.fcp-tile-team-member-content * {
+    text-decoration:none!important;
+    font-size:var(--font-big);
+    font-weight:100;
+    color:var(--color-sub)!important;
+}
 .fcp-tile-team-member-content p {
     margin:20px 0 0!important;
     padding:0!important;
-    font-size:70%;
+    font-size:var(--font-small);
 }
 
 /* effects */
@@ -88,7 +86,7 @@ a.fcp-tile-team-member-link:hover .fcp-tile-team-member-content {
     transition:min-height 0.55s ease-out, background-color 0.1s ease;
 }
 a.fcp-tile-team-member-link:hover + .fcp-tile-team-member-image {
-    filter:blur(20px);
+    filter:blur(15px);
 }
 
 /* loading effects */

@@ -12,7 +12,7 @@ defined( 'ABSPATH' ) || exit;
 
 // include all gutenberg blocks from surrounding dirs, whicn don't start with --
 foreach ( scandir( __DIR__ ) as $v ) {
-  if ( $v == '.' || $v == '..' || $v[0] === '-' ) { continue; }
+  if ( $v === '.' || $v === '..' || $v === 'assets' || $v[0] === '-' ) { continue; }
   $block_name = preg_replace( '/[^a-z0-9\-_]/', '', $v );
   @include_once( __DIR__ . '/' . $v . '/index.php' );
 }

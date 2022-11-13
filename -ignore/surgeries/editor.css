@@ -1,0 +1,66 @@
+.fcp-surg-tile {
+    height:calc( 100% + 56px );
+    border:1px dotted #444;
+    border-radius:10px;
+    padding:15px 15px 70px;
+    box-sizing:border-box;
+    position:relative;
+}
+
+.fcp-surg-tile-title {
+    display:inline-block;
+    min-width:100px;
+    margin:0;
+    padding:0 16px 11px 0;
+    position:relative;
+    left:-16px;
+    top:-22px;
+    background-color:#fff;
+    font-size:18px!important;
+    font-weight:bold;
+}
+
+.fcp-surg-tile .block-editor-block-list__layout > p {
+    margin:0 0 14px;
+    padding:0;
+    font-size:14px;
+    line-height:1.4;
+}
+
+.fcp-surg-tile .block-editor-block-list__layout > h1,
+.fcp-surg-tile .block-editor-block-list__layout > h2,
+.fcp-surg-tile .block-editor-block-list__layout > h3,
+.fcp-surg-tile .block-editor-block-list__layout > h4,
+.fcp-surg-tile .block-editor-block-list__layout > h5,
+.fcp-surg-tile .block-editor-block-list__layout > h6 {
+    display:inline-block;
+    margin:30px 0 15px;
+    border-bottom:1px dotted #444;
+    padding:0 0 7px;
+    font-size:14px;
+    line-height:1.4;
+}
+
+.fcp-surg-tile .block-editor-block-list__layout a {
+    text-decoration:none;
+}
+
+.fcp-surg-tile-link {
+    display:block;
+    width:100%;
+    margin:0;
+    padding:7px 12px;
+    position:absolute;
+    left:0;
+    bottom:0;
+    text-align:right;
+    font-size:18px!important;
+    font-weight:bold;
+}
+
+.flex-full-height-container {
+    align-items:stretch;
+}
+.flex-full-height-container > div > div {
+    height:calc( 100% - 112px );
+}
