@@ -2,12 +2,13 @@
     --height:110%;
 }
 .fcp-tile-team-member {
+    margin-bottom:30px;
     position:relative;
     border:1px solid var(--color-main);
     box-sizing:border-box;
-    color:var(--color-sub);
-    overflow:hidden;
     padding-bottom:var(--height);
+    overflow:hidden;
+    color:var(--color-sub);
 }
 
 .fcp-tile-team-member-image,
@@ -54,7 +55,7 @@
     color:var(--color-sub)!important;
 }
 .fcp-tile-team-member-content p {
-    margin:20px 0 0!important;
+    margin:0!important;
     padding:0!important;
     font-size:var(--font-small);
 }
