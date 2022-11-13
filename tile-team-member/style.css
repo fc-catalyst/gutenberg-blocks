@@ -93,7 +93,7 @@ a.fcp-tile-team-member-link:hover + .fcp-tile-team-member-image {
 
 /* loading effects */
 .fcp-tile-team-member {
-    transition:opacity 0.7s ease-out, transform 0.7s ease-out;
+    transition:opacity 0.7s ease-out, transform 0.6s ease-out;
 }
 .fcp-tile-team-member.fcp-tile-team-member_hidden {
     opacity:0;

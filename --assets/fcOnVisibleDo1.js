@@ -25,13 +25,12 @@
 
         const win_bot = window.scrollY + window.innerHeight;
         for ( let k in load ) {
-            // ++can add comparing for scrolling up from below
-            if ( win_bot < load[k].t + load[k].b ) { continue }
+
+            if ( !load[k] || win_bot < load[k].t + load[k].b ) { continue }
 
             if ( load[k].d ) { await new Promise( resolve => setTimeout( resolve, load[k].d ) ) }
 
-            load[k].f( load[k].o );
-            load[k].r = true; // remove
+            if ( load[k] && ( !load[k].r && load[k].f( load[k].o ) || true ) ) { load[k].r = true }
         }
 
         load = load.filter( el => !el.r );

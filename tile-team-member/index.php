@@ -75,17 +75,17 @@ add_action( 'wp_enqueue_scripts', function() use ( $block_name ) { // ++add firs
         filemtime( plugin_dir_path( __FILE__ ) . 'style.css' ),
         'all'
     );
-
+//*
     // appearing effect
-    wp_register_script( 'fcp-gutenberg-assets-fconvisibledo', '' );
-    wp_enqueue_script( 'fcp-gutenberg-assets-fconvisibledo' );
-    wp_add_inline_script( 'fcp-gutenberg-assets-fconvisibledo', ( function() {
+    wp_register_script( 'fcp-gutenberg-assets-fconvisibledo1', '' );
+    wp_enqueue_script( 'fcp-gutenberg-assets-fconvisibledo1' );
+    wp_add_inline_script( 'fcp-gutenberg-assets-fconvisibledo1', ( function() {
         ob_start();
-        @include_once ( __DIR__ . '/../--assets/fcOnVisibleDo.js' );
+        @include_once ( __DIR__ . '/../--assets/fcOnVisibleDo1.js' );
         @include_once ( __DIR__ . '/scripts.js' );
         $content = ob_get_contents();
         ob_end_clean();
         return $content;
     })());
-
+//*/
 });

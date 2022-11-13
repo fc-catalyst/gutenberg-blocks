@@ -4,9 +4,7 @@
         el.classList.add( 'fcp-tile-team-member_hidden' )
     });
 
-    //console.log( tiles );
     fcOnVisibleDo1( '.fcp-tile-team-member', function(el) {
-        //console.log( el );
         el.classList.remove( 'fcp-tile-team-member_hidden' );
     }, -100, 200 );
 
