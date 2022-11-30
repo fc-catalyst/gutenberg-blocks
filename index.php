@@ -21,3 +21,5 @@ foreach ( scandir( __DIR__ ) as $v ) {
 
 // list of controls
 // https://developer.wordpress.org/block-editor/reference-guides/components/text-control/
+
+//++add preview to the team-member tile

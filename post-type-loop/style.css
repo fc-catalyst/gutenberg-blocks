@@ -1,0 +1,13 @@
+.fcp-post-type-loop {
+    display:flex;
+    flex-wrap:wrap;
+}
+.fcp-post-type-loop > * {
+    flex:1;
+}
+.fcp-post-type-loop > *:first-child {
+    text-align:left;
+}
+.fcp-post-type-loop > *:last-child {
+    text-align:right;
+}
