@@ -34,6 +34,7 @@ add_action( 'init', function() use ( $block_name ) {
                     <?php echo wp_get_attachment_image( $props['mediaID'], !empty( $props['mediaSize'] ) ? $props['mediaSize'] : '' ) ?>
                 </div>
             </div>
+            <?php echo !empty( $props['moreinfo'] ) ? '<div class="fcp-tile-team-member-moreinfo">'.str_replace( "\n", '<br>', $props['moreinfo'] ).'</div>' : '' ?>
         </div>
         <?php
 

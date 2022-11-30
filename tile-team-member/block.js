@@ -3,6 +3,7 @@
 	const el = wp.element.createElement;
     const MediaUpload = wp.blockEditor.MediaUpload;
     const TextControl = wp.components.TextControl;
+    const TextareaControl = wp.components.TextareaControl;
     const SelectControl = wp.components.SelectControl;
     const Spacer = wp.components.__experimentalSpacer;
     const RangeControl = wp.components.RangeControl;
@@ -39,6 +40,9 @@
 				type: 'string'
 			},
 			url: {
+				type: 'string'
+			},
+            moreinfo: {
 				type: 'string'
 			},
             height: {
@@ -172,6 +176,13 @@
                                     value: props.attributes.url ? props.attributes.url : '',
                                     onChange: function( value ) {
                                         props.setAttributes( { url: value } );
+                                    }
+                                }),
+                                el( TextareaControl, {
+                                    placeholder: 'Additional information',
+                                    value: props.attributes.moreinfo ? props.attributes.moreinfo : '',
+                                    onChange: function( value ) {
+                                        props.setAttributes( { moreinfo: value } );
                                     }
                                 }),
                                 el( RangeControl, {
