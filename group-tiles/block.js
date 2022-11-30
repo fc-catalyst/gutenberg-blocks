@@ -41,7 +41,9 @@
                     },
                     el( InnerBlocks, {
                         allowedBlocks: [
-                            'fcp-gutenberg/tile-team-member'
+                            'fcp-gutenberg/tile-team-member',
+                            'core/paragraph',
+                            'core/spacer'
                         ],
                         template: [
                             [ 'fcp-gutenberg/tile-team-member', {} ],
