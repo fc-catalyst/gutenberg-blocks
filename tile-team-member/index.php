@@ -1,8 +1,10 @@
 <?php
 
-add_action( 'init', function() use ( $block_name ) {
+$hide_on_start = true; // ++make it into a global option somehow for these blocks
 
-    $print_block = function( $props, $content = null ) use ( $block_name ) {
+add_action( 'init', function() use ( $block_name, $hide_on_start ) {
+
+    $print_block = function( $props, $content = null ) use ( $block_name, $hide_on_start ) {
 
         $tag = empty( $props['url'] ) ? ['div'] : [
                 'a',
@@ -23,7 +25,7 @@ add_action( 'init', function() use ( $block_name ) {
 
         ?>
         <div>
-            <div class="fcp-<?php echo $block_name ?>"<?php echo $style ?>>
+            <div class="fcp-<?php echo $block_name ?><?php echo $hide_on_start ? ' fcp-'.$block_name.'_hidden' : '' ?>"<?php echo $style ?>>
                 <<?php echo implode( ' ' , $tag ) ?> class="fcp-<?php echo $block_name ?>-link">
                     <div class="fcp-<?php echo $block_name ?>-content"><?php
                         echo !empty( $props['name'] ) ? '<span>'.$props['name'].'</span>' : '';
@@ -66,7 +68,8 @@ add_action( 'init', function() use ( $block_name ) {
     );
 });
 
-add_action( 'wp_enqueue_scripts', function() use ( $block_name ) { // ++add first screen option
+// styling
+add_action( 'wp_enqueue_scripts', function() use ( $block_name ) {
 
     if ( !has_block( 'fcp-gutenberg/' . $block_name ) ) { return; }
 
@@ -76,17 +79,65 @@ add_action( 'wp_enqueue_scripts', function() use ( $block_name ) { // ++add firs
         filemtime( plugin_dir_path( __FILE__ ) . 'style.css' ),
         'all'
     );
-//*
-    // appearing effect
-    wp_register_script( 'fcp-gutenberg-assets-fconvisibledo1', '' );
-    wp_enqueue_script( 'fcp-gutenberg-assets-fconvisibledo1' );
-    wp_add_inline_script( 'fcp-gutenberg-assets-fconvisibledo1', ( function() {
+});
+
+// first screen styling
+add_action( 'wp_enqueue_scripts', function() use ( $block_name ) {
+
+    if ( !has_block( 'fcp-gutenberg/' . $block_name ) ) { return; }
+
+    wp_register_style( 'fcp-'.$block_name.'-fs', false );
+    wp_enqueue_style( 'fcp-'.$block_name.'-fs' );
+    wp_add_inline_style( 'fcp-'.$block_name.'-fs', ( function() {
+        ob_start(); //++ add this construction to a separate function and add namespaces to the plugin
+        @include_once ( __DIR__ . '/style-fs.css' );
+        $content = ob_get_contents();
+        ob_end_clean();
+        return $content;
+    })() );
+}, 7 );
+
+
+// appearing effect
+add_action( 'wp_enqueue_scripts', function() use ( $block_name, $hide_on_start ) {
+
+    if ( !has_block( 'fcp-gutenberg/' . $block_name ) ) { return; }
+    if ( !$hide_on_start ) { return; }
+
+    // hide the blocks on the start if js is on
+    wp_register_script( 'fcp-'.$block_name.'-fs-hide', '' );
+    wp_enqueue_script( 'fcp-'.$block_name.'-fs-hide' );
+    wp_add_inline_script( 'fcp-'.$block_name.'-fs-hide', ( function() {
         ob_start();
-        @include_once ( __DIR__ . '/../assets/fcOnVisibleDo1.js' );
-        @include_once ( __DIR__ . '/scripts.js' );
+        @include_once ( __DIR__ . '/scripts-hide.js' );
         $content = ob_get_contents();
         ob_end_clean();
         return $content;
     })());
-//*/
-});
+
+    // ++the following can probably be loaded as tags
+    // show the blocks on..
+    wp_register_script( 'fcp-'.$block_name.'-fs-show', '', ['fcp-gutenberg-assets-fconvisibledo1'] );
+    wp_enqueue_script( 'fcp-'.$block_name.'-fs-show' );
+    wp_add_inline_script( 'fcp-'.$block_name.'-fs-show', ( function() {
+        ob_start();
+        @include_once ( __DIR__ . '/scripts-show.js' );
+        $content = ob_get_contents();
+        ob_end_clean();
+        return $content;
+    })());
+
+    // load from assets: on-the-screen listener
+    wp_register_script( 'fcp-gutenberg-assets-fconvisibledo1', '' );
+    wp_enqueue_script( 'fcp-gutenberg-assets-fconvisibledo1' );
+    wp_add_inline_script( 'fcp-gutenberg-assets-fconvisibledo1', ( function() {
+        ob_start();
+        @include_once ( __DIR__ . '/../assets/fcOnVisibleDo1.min.js' ); // ++minify
+        $content = ob_get_contents();
+        ob_end_clean();
+        return $content;
+    })());
+
+}, 7 );
+// ++minify all the inlines
+// ++separate dev version and production

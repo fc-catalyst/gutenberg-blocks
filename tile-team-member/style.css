@@ -1,16 +1,3 @@
-.fcp-tile-team-member {
-    --height:110%;
-}
-.fcp-tile-team-member {
-    margin-bottom:30px;
-    position:relative;
-    border:1px solid var(--color-main);
-    box-sizing:border-box;
-    padding-bottom:var(--height);
-    overflow:hidden;
-    color:var(--color-sub);
-}
-
 .fcp-tile-team-member-image,
 .fcp-tile-team-member-link,
 .fcp-tile-team-member-content {
@@ -95,14 +82,4 @@ a.fcp-tile-team-member-link:hover .fcp-tile-team-member-content {
 }
 a.fcp-tile-team-member-link:hover + .fcp-tile-team-member-image {
     filter:blur(15px);
-}
-
-/* loading effects */
-.fcp-tile-team-member {
-    transition:opacity 0.7s ease-out, transform 0.6s ease-out;
-}
-.fcp-tile-team-member.fcp-tile-team-member_hidden {
-    opacity:0;
-    transform:translateY(150px);
-    transition:none;
 }
