@@ -11,3 +11,28 @@
 .fcp-post-type-loop > *:last-child {
     text-align:right;
 }
+.fcp-post-type-loop > *:first-child::before {
+    display:inline-block;
+    margin-right:8px;
+    content:'\00AB';
+}
+.fcp-post-type-loop > *:last-child::after {
+    display:inline-block;
+    margin-left:8px;
+    content:'\00BB';
+}
+
+.fcp-post-type-loop {
+    margin:25px 0 20px;
+}
+.fcp-post-type-loop a {
+    font-size:18px;
+    color:#897c75;
+}
+.fcp-post-type-loop > *:first-child::before,
+.fcp-post-type-loop > *:last-child::after,
+.fcp-post-type-loop > *:first-child:hover::before,
+.fcp-post-type-loop > *:last-child:hover::after {
+    display:inline!important;
+    position:static!important;
+}

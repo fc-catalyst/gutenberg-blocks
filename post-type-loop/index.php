@@ -9,26 +9,26 @@ add_action( 'init', function() use ( $block_name ) {
         ?>
         <div class="fcp-post-type-loop">
             <?php
-                if ( $prev = get_previous_post_link( '%link', '&laquo; %title' ) ) {
-                    echo $prev;
+                if ( $link = get_next_post_link( '%link', '%title' ) ) {
+                    echo $link;
                 } else {
-                    $prev = new WP_Query('posts_per_page=1&post_type='.get_post_type().'&order=DESC');
-                    $prev->the_post();
-                    echo '<a href="' . get_permalink() . '">&laquo; ' . get_the_title() . '</a>';
+                    $link = new WP_Query('posts_per_page=1&post_type='.get_post_type().'&order=ASC');
+                    $link->the_post();
+                    echo '<a href="' . get_permalink() . '">' . get_the_title() . '</a>';
                     wp_reset_postdata();
                 }
-                unset( $prev );
+                unset( $link );
             ?>
             <?php
-                if ( $next = get_next_post_link( '%link', '%title &raquo;' ) ) {
-                    echo $next;
+                if ( $link = get_previous_post_link( '%link', '%title' ) ) {
+                    echo $link;
                 } else {
-                    $next = new WP_Query('posts_per_page=1&post_type='.get_post_type().'&order=ASC');
-                    $next->the_post();
-                    echo '<a href="' . get_permalink() . '">' . get_the_title() . ' &raquo;</a>';
+                    $link = new WP_Query('posts_per_page=1&post_type='.get_post_type().'&order=DESC');
+                    $link->the_post();
+                    echo '<a href="' . get_permalink() . '">' . get_the_title() . '</a>';
                     wp_reset_postdata();
                 }
-                unset( $next );
+                unset( $link );
             ?>
         </div>
         <?php
