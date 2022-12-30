@@ -2,17 +2,19 @@
 
 (function() {
     let load = [],
-        timer = setTimeout( ()=>{} );
+        timer = setTimeout( ()=>{} ),
+		emax = 0;
 
-    function add( obj, func, bias = 0, delay = 0 ) { // bias: +20 for later -20 for earlier
+    function add( obj, func, bias = 0, delay = 0 ) { // bias: -20 for later 20 for earlier
         if ( !obj || !func ) { return }
 
         const add = function(obj) { // ++if the object is an array of bojects
             if ( typeof obj !== 'object' ) { return }
             if ( typeof jQuery !== 'undefined' && obj instanceof jQuery ) { obj = obj[0] }
-            load.push( { o : obj, f : func, b : bias ? bias : 0, t : top( obj ), d : delay, r : false } );
+            load.push( { o : obj, f : func, b : bias, d : delay, t : top( obj ) + bias } );
+			// object, function, bias, delay, top position, remove marker, executing now marker
         };
-        
+
         if ( typeof obj ==='string' ) { document.querySelectorAll( obj ).forEach( add ) }
         if ( typeof obj === 'object' ) { add( obj ) }
 
@@ -21,38 +23,45 @@
         start();
     }
 
-    async function check() {
+    function check() {
 
         const win_bot = window.scrollY + window.innerHeight;
-        for ( let k in load ) {
+		const timestamp = Date.now();
 
-            if ( !load[k] || win_bot < load[k].t + load[k].b ) { continue }
+		emax = emax < timestamp ? timestamp : emax;
 
-            if ( load[k].d ) { await new Promise( resolve => setTimeout( resolve, load[k].d ) ) }
+		load = load.filter( el => {
 
-            if ( load[k] && ( !load[k].r && load[k].f( load[k].o ) || true ) ) { load[k].r = true }
-        }
+            if ( win_bot < el.t ) { return true }
 
-        load = load.filter( el => !el.r );
+			emax = emax === timestamp ? emax + 1 : emax + el.d; // delay starting with second
+			//emax = emax + el.d; // delay every
 
+			setTimeout( () => {
+				el.f( el.o );
+			}, emax - timestamp );
+
+			return false;
+
+		});
+
+		clearTimeout( timer );
         if ( load.length === 0 ) { clear(); return }
-        
-        clearTimeout( timer );
         timer = setTimeout( recount, 500 ); // recount every scroll-stop in case of something loads a bit lazy
     }
-    
+
     function recount() {
-        for ( let k in load ) { load[k].t = top( load[k].o ) }
+        for ( let k in load ) { load[k].t = top( load[k].o ) + load[k].b }
     }
 
     function top(obj) {
         return obj.getBoundingClientRect().top + window.scrollY;
     }
-    
+
     function start() {
         clear();
         document.addEventListener( 'scroll', check );
-        window.addEventListener( 'resize', recount ); // ++can replace with a bodyResize custom event to avoid rude^
+        window.addEventListener( 'resize', recount );
         check();
     }
     function clear() {
