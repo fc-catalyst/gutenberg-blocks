@@ -22,10 +22,9 @@ add_action( 'init', function() use ( $block_name, $hide_on_start ) {
         }
 
         ob_start();
-
         ?>
         <div>
-            <div class="fcp-<?php echo $block_name ?><?php echo $hide_on_start ? ' fcp-'.$block_name.'_hidden' : '' ?>"<?php echo $style ?>>
+            <div class="fcp-<?php echo $block_name ?><?php echo $hide_on_start ? ' fcp-'.$block_name.'_hidden' : '' ?> <?php echo $props['className'] ?>"<?php echo $style ?>>
                 <<?php echo implode( ' ' , $tag ) ?> class="fcp-<?php echo $block_name ?>-link">
                     <div class="fcp-<?php echo $block_name ?>-content"><?php
                         echo !empty( $props['name'] ) ? '<span>'.$props['name'].'</span>' : '';
