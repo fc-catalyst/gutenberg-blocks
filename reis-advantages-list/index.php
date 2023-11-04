@@ -2,7 +2,7 @@
 
 $print_function = function($props, $content = null, $block_name) {
 ?>
-<section class="landingpage-hero-section lippenunterspritzung-hero-section">
+<section class="landingpage-hero-section lippenunterspritzung-hero-section alignwide">
 	<div class="container">
 		<h2 class="title">Lippenunterspritzung Düsseldorf</h2>
 		<div class="info-box">
