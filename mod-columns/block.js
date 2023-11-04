@@ -44,45 +44,6 @@
             )
         ) : null
     };
-    const select = (props, label, options) => {
-        const getClassName = () => {
-            const classes = (props.attributes.className?.split(' ') || []).filter(Boolean);
-            for (const className of classes) {
-                const matchedOption = options.find(option => option.value === className);
-                if (matchedOption) {
-                    return matchedOption.value;
-                }
-            }
-            return '';
-        };
-
-        return (
-            props.isSelected && ~effected_blocks.indexOf(props.name) ? (
-                el(
-                    wp.blockEditor.InspectorControls,
-                    {},
-                    el(
-                        wp.components.PanelBody,
-                        {},
-                        el(wp.components.SelectControl, {
-                            label: label,
-                            value: getClassName(),
-                            options: options,
-                            onChange: newValue => {
-                                let clearedClassName = props.attributes.className;
-                                options.forEach(option => {
-                                    clearedClassName = removeClass(clearedClassName, option.value);
-                                });
-                                const newClassName = addClass(clearedClassName, newValue && newValue || '');
-                                props.setAttributes({ className: newClassName });
-                            },
-                        })
-                    )
-                )
-            ) : null
-        );
-    };
-
 
     wp.hooks.addFilter(
         'editor.BlockEdit',

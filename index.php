@@ -101,7 +101,7 @@ function enqueue_files($dir) {
   // block style
   $block_file_path = $block_dir_src . '/style.css';
   if ( file_exists( $block_file_path ) ) {
-    add_action( 'wp_enqueue_scripts', function() use ($block_name, $block_settings) {
+    add_action( 'wp_enqueue_scripts', function() use ($block_name, $block_dir_url) {
 
       if ( !can_enqueue($block_name) ) { return; }
 
@@ -113,7 +113,7 @@ function enqueue_files($dir) {
   // block style inline
   $block_file_path = $block_dir_src . '/style-inline.css';
   if ( file_exists( $block_file_path ) ) {
-    add_action( 'wp_enqueue_scripts', function() use ($block_file_path, $block_name, $block_settings) {
+    add_action( 'wp_enqueue_scripts', function() use ($block_file_path, $block_name) {
 
       if ( !can_enqueue($block_name) ) { return; }
 
@@ -130,7 +130,7 @@ function enqueue_files($dir) {
   // block script
   $block_file_path = $block_dir_src . '/script.css';
   if ( file_exists( $block_file_path ) ) {
-    add_action( 'wp_enqueue_scripts', function() use ($block_name, $block_settings) {
+    add_action( 'wp_enqueue_scripts', function() use ($block_name, $block_dir_url) {
 
       if ( !can_enqueue($block_name) ) { return; }
 
@@ -142,7 +142,7 @@ function enqueue_files($dir) {
   // block script defer
   $block_file_path = $block_dir_src . '/script-defer.css';
   if ( file_exists( $block_file_path ) ) {
-    add_action( 'wp_enqueue_scripts', function() use ($block_name, $block_settings) {
+    add_action( 'wp_enqueue_scripts', function() use ($block_name, $block_dir_url) {
 
       if ( !can_enqueue($block_name) ) { return; }
 
@@ -154,7 +154,7 @@ function enqueue_files($dir) {
   // block script inline
   $block_file_path = $block_dir_src . '/script-inline.css';
   if ( file_exists( $block_file_path ) ) {
-    add_action( 'wp_enqueue_scripts', function() use ($block_file_path, $block_name, $block_settings) {
+    add_action( 'wp_enqueue_scripts', function() use ($block_file_path, $block_name) {
 
       if ( !can_enqueue($block_name) ) { return; }
 
