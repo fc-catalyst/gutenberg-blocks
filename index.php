@@ -14,6 +14,14 @@ License: GPL v3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 */
 
+/**
+ * -*    - dir to be ignored
+ * mod-* - dir for modifications to load files without the block presence check
+ * files to add are: editor.css, style.css, block.js, script.js
+ * *-inline* - like style-inline.css or script-inline.css - adds the content inline
+ * script-defer.js - defers the script loading
+ */
+
 namespace FC\GutenbergBlocks;
 
 defined( 'ABSPATH' ) || exit;
@@ -28,11 +36,16 @@ define( 'FCGB_URL', plugin_dir_url( __FILE__ ) );
 define( 'FCGB_DIR', plugin_dir_path( __FILE__ ) );
 
 
+// turn on the editor's styles
+add_action( 'after_setup_theme', function() {
+	add_theme_support( 'editor-styles' );
+	add_editor_style();
+});
+
+
+// collect the blocks
 foreach ( scandir( __DIR__ ) as $dir ) {
   if ( in_array( $dir, ['.', '..'] ) || in_array( $dir[0], ['-', '.'] ) ) { continue; }
-  $block_settings = (object) [
-    'ignore_block_absence' => false, // the dir is not a block but rather a set of settings for existing blocks or anything else
-  ];
   @include_once( __DIR__ . '/' . $dir . '/index.php' );
   enqueue_files( $dir, $block_settings );
   unset( $block_settings );

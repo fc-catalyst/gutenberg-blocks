@@ -3,3 +3,6 @@
         display: none;
     }
 }
+.add-shadow {
+    box-shadow: 0px 4px 40px 0px #00000026;
+}
