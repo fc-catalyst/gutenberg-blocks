@@ -6,7 +6,7 @@
 	const el = wp.element.createElement;
 
     
-	wp.blocks.registerBlockType( blockModName, {
+	wp.blocks.registerBlockType( blockName, {
 		title: 'FCT Cropped Height',
         icon: 'columns',
 		category: 'widgets',

@@ -91,7 +91,7 @@
 
     wp.hooks.addFilter(
         'editor.BlockEdit',
-        blockModName + '-control',
+        blockName + '-control',
         wp.compose.createHigherOrderComponent( BlockEdit => {
             return props => {
                 return el(

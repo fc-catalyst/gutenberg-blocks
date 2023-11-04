@@ -8,7 +8,7 @@
 	const MediaUpload = wp.blockEditor.MediaUpload;
 
 
-	wp.blocks.registerBlockType( blockModName, {
+	wp.blocks.registerBlockType( blockName, {
 		title: 'Decor with Images',
         icon: 'columns',
 		category: 'widgets',
