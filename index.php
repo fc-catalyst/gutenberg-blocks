@@ -47,19 +47,37 @@ add_action( 'after_setup_theme', function() {
 foreach ( scandir( __DIR__ ) as $dir ) {
   if ( in_array( $dir, ['.', '..'] ) || in_array( $dir[0], ['-', '.'] ) ) { continue; }
   @include_once( __DIR__ . '/' . $dir . '/index.php' );
-  enqueue_files( $dir );
+  enqueue_files( $dir, $print_function ?? null );
 }
 
 // functions
 
-function enqueue_files($dir) {
+function enqueue_files($dir, $print_function = null) {
 
   $block_name = FCGB_PREF. $dir; // for scripts & styles naming
   $block_type_name = FCGB_PREF.basename(__DIR__).'/'.$dir; // for naming blocks in Gutenberg
   $block_dir_src = FCGB_DIR. $dir;
   $block_dir_url = FCGB_URL. $dir;
 
-  
+
+  // render callback
+  if ( $print_function ) {
+    add_action( 'init', function() use ($block_name, $block_type_name, $print_function) {
+
+      $print_block = function($props, $content = null) use ($block_name, $block_type_name, $print_function) {
+          ob_start();
+          $print_function($props, $content = null, $block_name);
+          $content = ob_get_contents();
+          ob_end_clean();
+          return $content;
+      };
+
+      register_block_type( $block_type_name, [
+          'render_callback' => $print_block,
+      ]);
+    });
+  }
+
 
   // editor settings / scripts
   $block_file_path = $block_dir_src . '/block.js';
