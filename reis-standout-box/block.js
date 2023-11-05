@@ -4,15 +4,25 @@
 
     
 	wp.blocks.registerBlockType( blockName, {
-		title: 'FC Info Box',
-        icon: 'columns',
+		title,
+        icon: "columns",
 		category: 'widgets',
 
 		attributes: {
+			textColor: {
+				type: 'string',
+				default: '',
+			},
+			backgroundColor: {
+				type: 'string',
+				default: '',
+			},
 		},
 
         supports: {
             align: ['wide'],
+			color: true,
+			gradient: true,
         },
 
 		edit: props => {

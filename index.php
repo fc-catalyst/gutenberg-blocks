@@ -83,15 +83,18 @@ function enqueue_files($dir, $print_function = null) {
   // editor settings / scripts
   $block_file_path = $block_dir_src . '/block.js';
   if ( file_exists( $block_file_path ) ) {
-    add_action( 'enqueue_block_editor_assets', function() use ($block_file_path, $block_name, $block_type_name) {
+    add_action( 'enqueue_block_editor_assets', function() use ($block_file_path, $block_name, $block_type_name, $block_dir_src, $block_dir_url) {
 
       $script_contents = file_get_contents( $block_file_path ); // inlined to use variables without defining globals
+
+      $icon_src = is_file( $block_dir_src.'/icon.svg' ) ? $block_dir_url.'/icon.svg' : null;
 
       $inline_script  = '
           (() => {
               const prefix = "' . esc_js( $block_name.'-' ) . '";
               const blockName = "' . esc_js( $block_type_name ) . '";
               const title = "' . esc_js( slug_to_title( $block_name ) ) . '";
+              const iconSrc = "'.(isset( $icon_src ) ? esc_js( $icon_src ) : 'null' ).'";
               '.$script_contents.'
           })();
       ';

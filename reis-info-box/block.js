@@ -2,10 +2,17 @@
 
 	const el = wp.element.createElement;
 
-    
+    console.log('$$$$$$$$$$$$$$$$$', iconSrc);
 	wp.blocks.registerBlockType( blockName, {
 		title,
-        icon: 'columns',
+        icon: iconSrc
+			? el('img', {
+				src: iconSrc,
+				alt: title,
+				width: 20,
+				height: 20,
+			})
+			: 'columns',
 		category: 'widgets',
 
 		attributes: {
