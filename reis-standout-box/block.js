@@ -2,27 +2,27 @@
 
 	const el = wp.element.createElement;
 
-    
+
 	wp.blocks.registerBlockType( blockName, {
 		title,
-        icon: "columns",
+        icon: iconSrc
+			? el('img', {
+				src: iconSrc,
+				alt: title,
+				width: 20,
+				height: 20,
+			})
+			: 'columns',
 		category: 'widgets',
 
 		attributes: {
-			textColor: {
-				type: 'string',
-				default: '',
-			},
-			backgroundColor: {
-				type: 'string',
-				default: '',
-			},
 		},
 
         supports: {
             align: ['wide'],
-			color: true,
-			gradient: true,
+			color: {
+				gradients: true,
+			},
         },
 
 		edit: props => {
@@ -34,7 +34,8 @@
                         'core/heading', 'core/paragraph', 'core/list'
                     ],
                     template: [
-                        [ 'core/paragraph', {} ]
+                        [ 'core/heading', {} ],
+						[ 'core/list', { ordered: false, values: ['', ''] } ]
                     ],
                     templateLock: false
                 }),

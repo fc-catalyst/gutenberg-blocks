@@ -94,7 +94,7 @@ function enqueue_files($dir, $print_function = null) {
               const prefix = "' . esc_js( $block_name.'-' ) . '";
               const blockName = "' . esc_js( $block_type_name ) . '";
               const title = "' . esc_js( slug_to_title( $block_name ) ) . '";
-              const iconSrc = "'.(isset( $icon_src ) ? esc_js( $icon_src ) : 'null' ).'";
+              const iconSrc = "'.(isset( $icon_src ) ? esc_js( $icon_src ) : '' ).'";
               '.$script_contents.'
           })();
       ';

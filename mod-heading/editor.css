@@ -5,7 +5,7 @@
 .heading-decorated::after {
     content: '';
     width: 75px;
-    border-bottom: 2px solid #000;
+    border-bottom: 2px solid currentColor;
     position: absolute;
     bottom: 0;
     left: 0;

@@ -2,7 +2,6 @@
 
 	const el = wp.element.createElement;
 
-    console.log('$$$$$$$$$$$$$$$$$', iconSrc);
 	wp.blocks.registerBlockType( blockName, {
 		title,
         icon: iconSrc
