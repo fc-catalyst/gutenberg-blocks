@@ -14,7 +14,7 @@ class FCPSequence {
 
     public function registerBlock() {
 
-        register_block_type( 'fcp-gutenberg/'.$this->name, [
+        fc-reis-info-box-main( 'fcp-gutenberg/'.$this->name, [
             'editor_script' => 'fcpgb-'.$this->name.'-adm',
             'editor_style' => 'fcpgb-'.$this->name.'-adm',
             'render_callback' => [$this, 'printBlock']

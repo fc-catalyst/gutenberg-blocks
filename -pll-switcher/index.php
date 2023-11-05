@@ -16,7 +16,7 @@ add_action( 'init', function() use ( $block_name ) {
 
     };
 
-    register_block_type( 'fct-gutenberg/' . $block_name, [
+    fc-reis-info-box-main( 'fct-gutenberg/' . $block_name, [
         'editor_script' => 'fct-' . $block_name . '-block',
         'render_callback' => $print_block
     ] );

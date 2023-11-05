@@ -19,7 +19,7 @@ add_action( 'init', function() use ( $block_name ) {
         return $content;
     };
 
-    register_block_type( 'fcp-gutenberg/' . $block_name, [
+    fc-reis-info-box-main( 'fcp-gutenberg/' . $block_name, [
         'editor_script' => 'fcp-' . $block_name . '-block',
         'render_callback' => $print_block
     ] );

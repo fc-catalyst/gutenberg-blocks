@@ -44,7 +44,7 @@ add_action( 'init', function() use ( $block_name, $hide_on_start ) {
         return $content;
     };
 
-    register_block_type( 'fcp-gutenberg/' . $block_name, [
+    fc-reis-info-box-main( 'fcp-gutenberg/' . $block_name, [
         'editor_script' => 'fcp-' . $block_name . '-block',
         'editor_style' => 'fcp-' . $block_name . '-editor',
         'render_callback' => $print_block

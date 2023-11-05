@@ -37,7 +37,7 @@ add_action( 'init', function() use ($block_name, $block_dir_url, $block_type_nam
         return $content;
     };
 
-    register_block_type( $block_type_name, [
+    fc-reis-info-box-main( $block_type_name, [
         'editor_script' => $block_name,
         'editor_style' => $block_name.'-editor',
         'render_callback' => $print_block

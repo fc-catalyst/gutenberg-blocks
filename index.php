@@ -46,6 +46,7 @@ add_action( 'after_setup_theme', function() {
 // collect the blocks
 foreach ( scandir( __DIR__ ) as $dir ) {
   if ( in_array( $dir, ['.', '..'] ) || in_array( $dir[0], ['-', '.'] ) ) { continue; }
+  unset( $print_function );
   @include_once( __DIR__ . '/' . $dir . '/index.php' );
   enqueue_files( $dir, $print_function ?? null );
 }
@@ -90,6 +91,7 @@ function enqueue_files($dir, $print_function = null) {
           (() => {
               const prefix = "' . esc_js( $block_name.'-' ) . '";
               const blockName = "' . esc_js( $block_type_name ) . '";
+              const title = "' . esc_js( slug_to_title( $block_name ) ) . '";
               '.$script_contents.'
           })();
       ';
@@ -209,4 +211,9 @@ function can_enqueue($block_name) {
   return false;
 }
 
+function slug_to_title($slug) {
+  $title = str_replace(['-', '_'], ' ', $slug);
+  $title = ucwords($title);
+  return $title;
+}
 // ++add settings page to activate particular blocks
