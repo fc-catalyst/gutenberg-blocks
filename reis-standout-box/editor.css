@@ -1,6 +1,7 @@
 [data-type='fc-gutenberg-blocks/reis-standout-box'] {
     border-radius: 8px !important;
     padding: 55px 50px 35px;
+    box-sizing: border-box;
 }
 [data-type='fc-gutenberg-blocks/reis-standout-box'][data-align='wide'] {
     max-width: 980px !important;
@@ -10,13 +11,6 @@
     max-width: var(--wp--style--global--content-size);
     margin-left: auto;
     margin-right: auto;
-}
-
-.fc-reis-standout-box-main *:first-child {
-    margin-top: 0 !important;
-}
-.fc-reis-standout-box-main *:last-child {
-    margin-bottom: 0 !important;
 }
 
 .fc-reis-standout-box-main ul {
@@ -52,4 +46,11 @@
 [data-type='fc-gutenberg-blocks/reis-info-box'] + [data-type='fc-gutenberg-blocks/reis-standout-box'] {
     margin-top: -90px;
     padding-top: 130px;
+}
+
+.fc-reis-standout-box-main *:first-child {
+    margin-top: 0 !important;
+}
+.fc-reis-standout-box-main *:last-child {
+    margin-bottom: 0 !important;
 }

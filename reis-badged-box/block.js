@@ -20,12 +20,17 @@
                 type: 'array',
                 default: []
             },
+			link: {
+				type: 'string',
+			}
 		},
 
         supports: {
 			color: {
 				gradients: true,
+				link: true,
 			},
+
         },
 
 		edit: props => {
@@ -35,8 +40,7 @@
                 const newImage = {
                     id: media.id,
                     url: media.url,
-					thumbnail: media.sizes.thumbnail ? media.sizes.thumbnail.url : media.url,
-                    caption: images[ind]?.caption || '',
+					thumbnail: media.sizes.medium ? media.sizes.medium.url : media.url, // .thumbnail
                 };
                 images[ind] = newImage;
                 props.setAttributes({ images });
@@ -45,29 +49,27 @@
             const mediaBox = ind => {
                 const images = [...props.attributes.images];
                 const mediaID = images[ind]?.id || 0;
-                //const mediaURL = images[ind]?.url || '';
-				const mediaThumbnail = images[ind]?.thumbnail || '';
-                const mediaCaption = images[ind]?.caption || '';
+				const mediaThumbnail = images[ind]?.thumbnail || images[ind]?.url;
                 return [
                     'figure',
                     {},
-                    el( MediaUpload, {
+                    el( wp.blockEditor.MediaUpload, {
                         onSelect: media => { onSelectImage(media, ind) },
                         allowedTypes: 'image',
                         value: mediaID,
                         render: obj => {
                             return el(
-                                Button,
+                                wp.components.Button,
                                 {
                                     type: 'button',
-                                    className: 'select',
+                                    className: 'select-image ' + (mediaID || 'empty-image'),
                                     onClick: obj.open,
                                 },
                                 mediaID
                                     ? el( 'img', { src: mediaThumbnail } )
                                     : el( 'span', {}, 'Image' ),
                                 mediaID
-                                    ? el( 'button', { type: 'button', className: 'clear', onClick: e => {
+                                    ? el( 'button', { type: 'button', className: 'clear-image', onClick: e => {
                                         e.stopPropagation();
                                         images[ind].id = 0;
                                         images[ind].url = '';
@@ -76,17 +78,6 @@
                                     : null,
                             );
                         },
-                    }),
-                    el( RichText, {
-                        tagName: 'figcaption',
-                        placeholder: 'Caption',
-                        value: mediaCaption,
-                        onChange: value => {
-                            const images = [...props.attributes.images];
-                            images[ind].caption = value;
-                            props.setAttributes({ images });
-                        },
-                        allowedFormats: ['core/bold', 'core/italic']
                     })
                 ];
 
@@ -105,14 +96,35 @@
                     ],
                     templateLock: false
                 }),
+				el( wp.element.Fragment, // sidebar
+				{},
+				el( wp.blockEditor.InspectorControls, {},
+					el( wp.components.PanelBody, {},
+						el( wp.components.TextControl, {
+							label: 'Link the badge to a URL',
+							value: props.attributes.link || '',
+							onChange: value => {
+								props.setAttributes( { link: value } );
+							},
+						}),
+					)
+				)
+			)
 			);
 		},
 		save: props => {
+			const image = props.attributes.images[0]?.url
+				? el( 'img', { src: props.attributes.images[0].url, alt: 'Badge' } )
+				: null;
+			const link = image && props.attributes.link
+				? el( 'a', { href: props.attributes.link, className: `${prefix}image` }, image )
+				: null;
+			const span = image && !props.attributes.link
+				? el( 'span', { className: `${prefix}image` }, image )
+				: null;
             return el( 'div',
 				{ className: `${prefix}main` },
-				images[0].url
-					? el( 'img', { src: images[0].url, alt: 'Badge' } )
-					: null,
+				link || span,
                 el( wp.blockEditor.InnerBlocks.Content )
             );
 		},

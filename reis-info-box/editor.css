@@ -6,6 +6,7 @@
 .fc-reis-info-box-main {
     border: 1px solid #05809e;
     padding: 40px 50px;
+    box-sizing: border-box;
     background: #fff;
     position: relative;
 }

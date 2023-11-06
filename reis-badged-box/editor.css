@@ -1,55 +1,50 @@
-[data-type='fc-gutenberg-blocks/reis-standout-box'] {
+[data-type='fc-gutenberg-blocks/reis-badged-box'] {
+    max-width: 680px !important;
     border-radius: 8px !important;
-    padding: 55px 50px 35px;
-}
-[data-type='fc-gutenberg-blocks/reis-standout-box'][data-align='wide'] {
-    max-width: 980px !important;
-}
-.fc-reis-standout-box-main {
-    width: 100%;
-    max-width: var(--wp--style--global--content-size);
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.fc-reis-standout-box-main *:first-child {
-    margin-top: 0 !important;
-}
-.fc-reis-standout-box-main *:last-child {
-    margin-bottom: 0 !important;
-}
-
-.fc-reis-standout-box-main ul {
-    display: flex;
-    justify-content: space-between;
-    margin: 50px 0 0 0;
-    padding: 0;
-    flex-wrap: wrap;
-    list-style: none;
-}
-.fc-reis-standout-box-main ul li {
-    width: calc(50% - 40px);
-    margin: 0 0 40px;
-    padding: 6px 0 0 60px;
+    padding: 30px 30px 30px 120px;
     box-sizing: border-box;
     position: relative;
-    font-size: 16px;
-    display: flex;
-    line-height: 1.4em;
-}
-.fc-reis-standout-box-main ul li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 36px;
-    height: 34px;
-    background: url("data:image/svg+xml,%3Csvg width='65' height='57' viewBox='0 0 65 57' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.95122 0.519543C4.06255 0.79884 3.25005 1.35743 2.28521 2.34767C-0.152294 4.75978 4.97325e-05 3.10938 4.97325e-05 28.5C4.97325e-05 53.8906 -0.152294 52.2402 2.28521 54.6524C4.69732 57.0899 3.04693 56.9375 28.4376 56.9375C53.1426 56.9375 52.0508 57.0137 54.2344 55.084C54.8692 54.5254 55.6817 53.4844 56.0625 52.7734L56.7481 51.4785L56.8243 38.5801L56.9004 25.707L56.2657 25.0723C55.4278 24.2344 54.2598 24.2344 53.4473 25.0723L52.8125 25.6816V37.9453C52.8125 49.3457 52.7872 50.2852 52.3555 51.0723C52.1016 51.5547 51.4922 52.1641 51.0098 52.418C50.1973 52.8496 48.9786 52.875 28.4376 52.875C7.89654 52.875 6.67778 52.8496 5.86528 52.418C5.38286 52.1641 4.77349 51.5547 4.51958 51.0723C4.08794 50.2598 4.06255 49.041 4.06255 28.5C4.06255 7.95899 4.08794 6.74024 4.51958 5.92774C4.77349 5.44532 5.38286 4.83595 5.86528 4.58204C6.67778 4.1504 7.76958 4.12501 24.2989 4.12501H41.8692L42.5547 3.54103C43.4942 2.70314 43.4942 1.48439 42.5547 0.646496L41.8692 0.0625114L24.045 0.0879021C8.22661 0.0879021 6.06841 0.138683 4.95122 0.519543Z' fill='white'/%3E%3Cpath d='M47.6075 14.5352L33.1348 29.0078L27.5743 23.4473C24.502 20.375 21.7344 17.8105 21.4044 17.709C20.7188 17.5566 19.4239 18.1406 19.1954 18.7246C18.6876 20.0957 18.8653 20.3242 25.7208 27.1797C31.8653 33.3242 32.4493 33.832 33.2618 33.832C34.0997 33.832 35.0645 32.8926 49.5626 18.3945C63.7051 4.25195 65.0001 2.90625 65.0001 2.14453C65.0001 1.02734 64.0352 0.0625 62.918 0.0625C62.1563 0.0625 60.8614 1.30664 47.6075 14.5352Z' fill='white'/%3E%3C/svg%3E%0A") no-repeat 50%;
-    background-size: contain;
 }
 
-/* exception for after info box */
-[data-type='fc-gutenberg-blocks/reis-info-box'] + [data-type='fc-gutenberg-blocks/reis-standout-box'] {
-    margin-top: -90px;
-    padding-top: 130px;
+.fc-reis-badged-box-main .select-image {
+    width: 140px;
+    height: auto;
+    min-height: 140px;
+    position: absolute;
+    left: -40px;
+    top: -45px;
+    z-index: 1;
+    text-align: center;
+}
+.fc-reis-badged-box-main .select-image.empty-image {
+    background-color: #fff;
+    border: 1px dotted grey;
+}
+.fc-reis-badged-box-main .select-image > img,
+.fc-reis-badged-box-main .select-image > span {
+    width: 140px;
+    height: auto;
+}
+.fc-reis-badged-box-main button.clear-image {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 22222;
+    appearance: none;
+    font-size: 20px;
+    line-height: 1;
+    border-radius: 50%;
+    border: none;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+.fc-reis-badged-box-main button.clear-image:hover {
+    color: red;
+}
+
+.fc-reis-badged-box-main *:first-child {
+    margin-top: 0 !important;
+}
+.fc-reis-badged-box-main *:last-child {
+    margin-bottom: 0 !important;
 }
