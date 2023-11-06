@@ -1,0 +1,16 @@
+.background-decor {
+    --top: 35px;
+    --left: 80px;
+    margin-top: var(--top);
+    padding-top: var(--top);
+}
+.background-decor::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: calc( var(--wp--style--global--content-size) + var(--left) + var(--left) );
+    max-width: 100%;
+    padding-top: 235px;
+    background: #d9d9d957;
+    transform: translate(calc(0px - var(--left)), calc(0px - var(--top)));
+}

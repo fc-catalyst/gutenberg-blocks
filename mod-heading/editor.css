@@ -2,7 +2,7 @@
     position: relative;
     padding-bottom: 15px;
 }
-.heading-decorated::after {
+.heading-decorated::before {
     content: '';
     width: 75px;
     border-bottom: 2px solid currentColor;
