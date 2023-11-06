@@ -1,0 +1,29 @@
+.bullet-decor {
+    list-style: none;
+    padding-left: 0;
+    counter-reset: item;
+}
+.bullet-decor li {
+    margin-bottom: 15px;
+    padding-left: 70px;
+}
+.bullet-decor li::before {
+    position: absolute;
+    line-height: 1;
+    left: 0;
+    top: 0;
+    font-size: 42px;
+    font-weight: 700;
+}
+ol.bullet-decor li::before {
+    content: counter(item) ".";
+    counter-increment: item;
+}
+ul.bullet-decor li::before {
+    content: '';
+    top: 5px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--wp--preset--color--primary);
+    border-radius: 50%;
+}
