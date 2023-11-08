@@ -10,11 +10,11 @@
     bottom: 0;
     left: 0;
 }
-.heading-decorated.has-text-align-center::after {
+.heading-decorated.has-text-align-center::before {
     left: 50%;
     transform: translate(-50%);
 }
-.heading-decorated.has-text-align-right::after {
+.heading-decorated.has-text-align-right::before {
     left: auto;
     right: 0;
 }
