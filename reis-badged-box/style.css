@@ -15,7 +15,14 @@
     top: -45px;
     z-index: 1;
 }
-
+@media(max-width:767px) {
+    .fc-reis-badged-box-main {
+        padding: 25px;
+    }
+    .fc-reis-badged-box-image {
+        position: static;
+    }
+}
 .fc-reis-badged-box-image > img {
     width: 140px;
     height: auto;

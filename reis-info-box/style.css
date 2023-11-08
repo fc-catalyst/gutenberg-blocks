@@ -9,6 +9,19 @@
 .fc-reis-info-box-main.alignwide {
     max-width: 720px !important;
 }
+@media(max-width:991px) {
+    .fc-reis-info-box-main.alignwide {
+        max-width: 520px !important;
+    }
+}
+@media(max-width:767px) {
+    .fc-reis-info-box-main {
+        width: 85%;
+        padding: 20px 25px;
+        font-size: 90%;
+    }
+}
+
 .fc-reis-info-box-main::after {
     content: "";
     position: absolute;

@@ -1,16 +1,30 @@
-.background-decor {
-    --top: 35px;
-    --left: 80px;
-    margin-top: var(--top);
-    padding-top: var(--top);
+.bullet-decor {
+    list-style: none;
+    padding-left: 0;
+    counter-reset: item;
 }
-.background-decor::before {
-    content: '';
+.bullet-decor li {
+    margin-bottom: 15px;
+    padding-left: 70px;
+    position: relative;
+}
+.bullet-decor li::before {
     position: absolute;
-    z-index: -1;
-    width: calc( var(--wp--style--global--content-size) + var(--left) + var(--left) );
-    max-width: 100%;
-    padding-top: 235px;
-    background: #d9d9d957;
-    transform: translate(calc(0px - var(--left)), calc(0px - var(--top)));
+    line-height: 1;
+    left: 0;
+    top: 0;
+    font-size: 42px;
+    font-weight: 700;
+}
+ol.bullet-decor li::before {
+    content: counter(item) ".";
+    counter-increment: item;
+}
+ul.bullet-decor li::before {
+    content: '';
+    top: 2px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--wp--preset--color--primary);
+    border-radius: 50%;
 }

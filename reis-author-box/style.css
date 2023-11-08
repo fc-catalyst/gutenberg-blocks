@@ -6,7 +6,11 @@
 .fc-reis-author-box-main.alignwide {
     max-width: 920px !important;
 }
-
+@media(max-width:991px) {
+    .fc-reis-author-box-main.alignwide {
+        max-width: 700px !important;
+    }
+}
 .fc-reis-author-box-image {
     width: 240px;
     height: auto;
@@ -17,6 +21,17 @@
     transform: translateY(-50%);
     z-index: 1;
     text-align: center;
+}
+@media(max-width:767px) {
+    .fc-reis-author-box-main {
+        padding-left: 40px;
+    }
+    .fc-reis-author-box-image {
+        display: block;
+        margin-bottom: 30px;
+        position: static;
+        transform: none;
+    }
 }
 
 .fc-reis-author-box-image > img {
