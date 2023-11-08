@@ -26,6 +26,7 @@
 		},
 
         supports: {
+			align: ['wide'],
 			color: {
 				gradients: true,
 			},
@@ -86,11 +87,12 @@
 				el( ...mediaBox(0) ),
 				el( wp.blockEditor.InnerBlocks, {
                     allowedBlocks: [
-                        'core/heading', 'core/paragraph', 'core/list', 'core/spacer'
+                        'core/heading', 'core/paragraph', 'core/list', 'core/buttons', 'core/spacer'
                     ],
                     template: [
                         [ 'core/heading', {} ],
-						[ 'core/paragraph', {} ]
+						[ 'core/paragraph', {} ],
+						[ 'core/buttons', {} ]
                     ],
                     templateLock: false
                 }),
@@ -99,7 +101,7 @@
 				el( wp.blockEditor.InspectorControls, {},
 					el( wp.components.PanelBody, {},
 						el( wp.components.TextControl, {
-							label: 'Link the badge to a URL',
+							label: 'Link the image to a URL',
 							value: props.attributes.link || '',
 							onChange: value => {
 								props.setAttributes( { link: value } );
@@ -112,7 +114,7 @@
 		},
 		save: props => {
 			const image = props.attributes.images[0]?.url
-				? el( 'img', { src: props.attributes.images[0].url, alt: 'Badge' } )
+				? el( 'img', { src: props.attributes.images[0].url, alt: 'Photo' } )
 				: null;
 			const link = image && props.attributes.link
 				? el( 'a', { href: props.attributes.link, className: `${prefix}image` }, image )

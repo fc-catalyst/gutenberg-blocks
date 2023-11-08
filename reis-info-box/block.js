@@ -27,7 +27,7 @@
 				{ className: `${props.className} ${prefix}main` },
 				el( wp.blockEditor.InnerBlocks, {
                     allowedBlocks: [
-                        'core/heading', 'core/paragraph', 'core/list'
+                        'core/heading', 'core/paragraph', 'core/list', 'core/spacer'
                     ],
                     template: [
                         [ 'core/paragraph', {} ]

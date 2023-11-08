@@ -1,0 +1,33 @@
+.fc-reis-author-box-main {
+    padding: 30px 40px 30px 220px;
+    box-sizing: border-box;
+    position: relative;
+}
+.fc-reis-author-box-main.alignwide {
+    max-width: 920px !important;
+}
+
+.fc-reis-author-box-image {
+    width: 240px;
+    height: auto;
+    min-height: 240px;
+    position: absolute;
+    left: -50px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    text-align: center;
+}
+
+.fc-reis-author-box-image > img {
+    width: 240px;
+    height: auto;
+    box-shadow: -4px 6px 18px #00000040;
+}
+
+.fc-reis-author-box-main *:first-child {
+    margin-top: 0 !important;
+}
+.fc-reis-author-box-main *:last-child {
+    margin-bottom: 0 !important;
+}
