@@ -51,6 +51,19 @@ foreach ( scandir( __DIR__ ) as $dir ) {
   enqueue_files( $dir, $print_function ?? null );
 }
 
+// easy access to reusable blocks/* reusable blocks to the menu */
+add_action( 'admin_menu', function() {
+  add_menu_page(
+      'Reusable Gutenberg Blocks',   // Page title
+      'Reusable Blocks',             // Menu title
+      'manage_options',              // Capability required to access the page
+      'edit.php?post_type=wp_block', // URL or slug for the page
+      '',                            // Function to render the page (empty, as we just want a link)
+      'dashicons-block-default',     // Icon URL or Dashicon class (using default block icon)
+      25                             // Position in the left menu (adjust as needed)
+  );
+});
+
 // functions
 
 function enqueue_files($dir, $print_function = null) {
