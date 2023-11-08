@@ -219,4 +219,6 @@ function slug_to_title($slug) {
   $title = ucwords($title);
   return $title;
 }
+
 // ++add settings page to activate particular blocks
+// ++make index.php independent, only block.js meters
