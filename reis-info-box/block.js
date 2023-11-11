@@ -19,6 +19,9 @@
 
         supports: {
             align: ['wide'],
+			spacing: {
+				margin: ['top', 'bottom'],
+			},
         },
 
 		edit: props => {

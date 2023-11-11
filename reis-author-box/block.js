@@ -30,6 +30,9 @@
 			color: {
 				gradients: true,
 			},
+			spacing: {
+				margin: ['top', 'bottom'],
+			},
         },
 
 		edit: props => {

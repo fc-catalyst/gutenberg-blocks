@@ -75,6 +75,6 @@
 
 /* exception for after info box */
 .fc-reis-info-box-main + .fc-reis-standout-box-main {
-    margin-top: -90px;
+    margin-top: -90px!important;
     padding-top: 130px;
 }

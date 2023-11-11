@@ -44,7 +44,7 @@
 
 /* exception for after info box */
 [data-type='fc-gutenberg-blocks/reis-info-box'] + [data-type='fc-gutenberg-blocks/reis-standout-box'] {
-    margin-top: -90px;
+    margin-top: -90px!important;
     padding-top: 130px;
 }
 
