@@ -31,8 +31,7 @@
 
 			return el( 'div',
 				{
-					className: `${props.className} ${prefix}main has-background has-secondary-back-gradient-background`,
-					style: {paddingTop: `var(--wp--preset--spacing--30)`, paddingRight: `var(--wp--preset--spacing--30)`, paddingBottom: `var(--wp--preset--spacing--30)`, paddingLeft: `var(--wp--preset--spacing--30)`},
+					className: `${props.className} ${prefix}main`,
 				},
 				el( wp.blockEditor.InnerBlocks, {
                     allowedBlocks: [
@@ -42,7 +41,7 @@
 						[ 'core/heading', {level: 3} ],
 						[ 'core/image', {} ],
                         [ 'core/paragraph', {} ],
-						[ 'core/button', {className: 'blocks-default'} ],
+						[ 'core/button', {className: `${prefix}button`} ],
                     ],
                     templateLock: true
                 }),
