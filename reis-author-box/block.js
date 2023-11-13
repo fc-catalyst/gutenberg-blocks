@@ -131,8 +131,8 @@
 				: null;
             return el( 'div',
 				{ className: `${prefix}main` },
-				link || span,
-                el( wp.blockEditor.InnerBlocks.Content )
+                el( wp.blockEditor.InnerBlocks.Content ),
+				link || span
             );
 		},
 	} );
