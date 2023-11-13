@@ -1,6 +1,6 @@
 .heading-decorated {
     position: relative;
-    padding-bottom: 15px;
+    padding-bottom: 12px;
 }
 .heading-decorated::before {
     content: '';

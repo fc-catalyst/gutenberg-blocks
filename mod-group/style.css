@@ -2,7 +2,7 @@
     --top: 35px;
     --left: 80px;
     margin-top: var(--top);
-    padding-top: var(--top);
+    margin-bottom: var(--top);
     padding-top: calc(var(--top) / 2);
     padding-bottom: calc(var(--top) / 2);
     position: relative;
