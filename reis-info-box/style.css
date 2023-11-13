@@ -4,6 +4,7 @@
     box-sizing: border-box;
     background: #fff;
     position: relative;
+    font-weight: 500;
 }
 .fc-reis-info-box-main.alignwide {
     max-width: 720px !important;
