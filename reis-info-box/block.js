@@ -15,6 +15,10 @@
 		category: 'widgets',
 
 		attributes: {
+			align: {
+				type: 'string',
+				default: 'wide',
+			}
 		},
 
         supports: {
@@ -33,7 +37,7 @@
                         'core/heading', 'core/paragraph', 'core/list', 'core/spacer'
                     ],
                     template: [
-                        [ 'core/paragraph', {} ]
+                        [ 'core/paragraph', {content: 'Content'} ]
                     ],
                     templateLock: false
                 }),

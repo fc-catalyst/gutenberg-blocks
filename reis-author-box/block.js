@@ -22,6 +22,10 @@
             },
 			link: {
 				type: 'string',
+			},
+			align: {
+				type: 'string',
+				default: 'wide',
 			}
 		},
 

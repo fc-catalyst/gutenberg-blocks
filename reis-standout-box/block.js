@@ -16,6 +16,10 @@
 		category: 'widgets',
 
 		attributes: {
+			align: {
+				type: 'string',
+				default: 'wide',
+			}
 		},
 
         supports: {
