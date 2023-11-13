@@ -55,6 +55,7 @@
                     {},
                     el(BlockEdit, props),
                     toggle(props, 'heading-decorated', 'Add Decoration'),
+                    toggle(props, 'ignore-toc', 'Ignore the Table of Content'),
                 );
             };
         })
