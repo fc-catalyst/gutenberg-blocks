@@ -23,6 +23,9 @@
 
         supports: {
             align: ['wide'],
+			color: {
+				gradients: true,
+			},
 			spacing: {
 				margin: ['top', 'bottom'],
 			},
@@ -37,7 +40,7 @@
                         'core/heading', 'core/paragraph', 'core/list', 'core/spacer'
                     ],
                     template: [
-                        [ 'core/paragraph', {content: 'Content'} ]
+                        [ 'core/paragraph', {} ]
                     ],
                     templateLock: false
                 }),

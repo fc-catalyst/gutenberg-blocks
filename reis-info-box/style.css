@@ -2,9 +2,12 @@
     border: 1px solid #05809e;
     padding: 40px 50px;
     box-sizing: border-box;
-    background: #fff;
     position: relative;
     font-weight: 500;
+}
+.fc-reis-info-box-main.has-background {
+    border: none;
+    border-radius: 8px;
 }
 .fc-reis-info-box-main.alignwide {
     max-width: 720px !important;
