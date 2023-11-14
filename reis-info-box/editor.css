@@ -25,10 +25,10 @@
     pointer-events: none;
 }
 
-[data-type='fc-gutenberg-blocks/reis-info-box'].has-background {
+[data-type='fc-gutenberg-blocks/reis-info-box'].has-background:not(.has-base-background-color) {
     border-radius: 8px;
 }
-[data-type='fc-gutenberg-blocks/reis-info-box'].has-background .fc-reis-info-box-main {
+[data-type='fc-gutenberg-blocks/reis-info-box'].has-background:not(.has-base-background-color) .fc-reis-info-box-main {
     border: none;
 }
 

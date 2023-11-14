@@ -5,7 +5,7 @@
     position: relative;
     font-weight: 500;
 }
-.fc-reis-info-box-main.has-background {
+.fc-reis-info-box-main.has-background:not(.has-base-background-color) {
     border: none;
     border-radius: 8px;
 }
