@@ -4,7 +4,7 @@ Plugin Name: FCP Gutenberg Blocks
 Plugin URI: https://github.com/VVolkov833/gutenberg-blocks
 GitHub Plugin URI: https://github.com/VVolkov833/gutenberg-blocks
 Description: Add various gutenberg blocks
-Version: 0.1.1
+Version: 0.1.2
 Requires at least: 6.0
 Tested up to: 6.3
 Requires PHP: 7.4
@@ -124,10 +124,10 @@ function enqueue_files($dir, $print_function = null) {
   if ( file_exists( $block_file_path ) ) {
     add_action( 'current_screen', function($screen) use ($block_dir_url) { // for block theme editor // ++ check if the next enqueue loads the script second time O_o
       if( $screen->base !== 'site-editor' ) return;
-      add_editor_style( $block_dir_url.'/editor.css' );
+      add_editor_style( $block_dir_url.'/editor.css'.'?ver='.FCGB_VER );
     });
     add_action( 'enqueue_block_editor_assets', function() use ($block_dir_url) { // for common editor
-        add_editor_style( $block_dir_url.'/editor.css' );
+        add_editor_style( $block_dir_url.'/editor.css'.'?ver='.FCGB_VER );
     });
   }
 
