@@ -43,7 +43,7 @@ define( 'FCGB_DIR', plugin_dir_path( __FILE__ ) );
 
 
 // collect the blocks
-$active_blocks = get_option( FCGB_PLUGIN )['active-blocks'];
+$active_blocks = get_option( FCGB_PLUGIN )['active-blocks'] ?? [];
 list_active_blocks( function($dir) use ($active_blocks) {
   if ( !in_array($dir, $active_blocks) ) { return; }
   unset( $print_function );
