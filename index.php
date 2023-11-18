@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: FCP Gutenberg Blocks
+Plugin Name: FC Gutenberg Blocks
 Plugin URI: https://github.com/VVolkov833/gutenberg-blocks
 GitHub Plugin URI: https://github.com/VVolkov833/gutenberg-blocks
 Description: Add various gutenberg blocks
@@ -43,7 +43,9 @@ define( 'FCGB_DIR', plugin_dir_path( __FILE__ ) );
 
 
 // collect the blocks
-list_active_blocks( function($dir) {
+$active_blocks = get_option( FCGB_PLUGIN )['active-blocks'];
+list_active_blocks( function($dir) use ($active_blocks) {
+  if ( !in_array($dir, $active_blocks) ) { return; }
   unset( $print_function );
   @include_once( FCGB_DIR.$dir.'/index.php' );
   enqueue_files( $dir, $print_function ?? null );

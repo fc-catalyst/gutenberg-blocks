@@ -3,35 +3,43 @@
 namespace FC\GutenbergBlocks;
 defined( 'ABSPATH' ) || exit;
 
-function settings_structure() {
+$settings = (object) [
+    'heading' => 'FC Gutenberg Blocks',
+    'menu_label' => 'Gutenberg Blocks',
+    'slug' => 'fc-gutenberg-blocks',
+    'varname' => FCGB_PLUGIN,
+    'group' => FCGB_PLUGIN.'-group',
+    'page' => FCGB_PLUGIN.'-page',
+    'section' => '',
+    'values' => get_option( FCGB_PLUGIN ),
+];
 
-    $fields_structure = [
-        'Active blocks' => [
-            ['Active blocks', 'checkboxes', [ 'options' => '%get_public_post_types' ]],
-        ],
-    ];
+// example: https://github.com/VVolkov833/posts-by-query/blob/master/inc/settings-page.php
+$fields_structure = [
+    'Active blocks' => [
+        ['Active blocks', 'checkboxes', [ 'options' => '%get_public_post_types' ]],
+    ],
+];
 
-    // dynamic options to add to the structure
-    $options['get_public_post_types'] = list_active_blocks( __DIR__.'/../' );
+// dynamic options to add to the structure
+$options = [
+    'get_public_post_types' => list_active_blocks(),
+];
 
-    // fill in the structure with dynamic options
-    foreach( $fields_structure as &$v ) {
-        foreach ( $v as &$w ) {
-            if ( empty( $w[2] ) || empty( $w[2]['options'] ) || !is_string( $w[2]['options'] ) || strpos( $w[2]['options'], '%' ) !== 0 ) { continue; }
-            $w[2]['options'] = $options[ substr( $w[2]['options'], 1 ) ] ?? [];
-        }
-    }
+$default_values = [
+    'active-blocks' => array_keys( list_active_blocks() ),
+];
 
-    return $fields_structure;
-}
 
-// settings page
-add_action( 'admin_menu', function() {
-	add_options_page( 'FC Gutenberg Blocks', 'Gutenberg Blocks', 'switch_themes', 'fc-gutenberg-blocks', function() {
+$fields_structure = structure_options_fill($fields_structure, $options);
+
+//-------------------------------------------------
+
+// settings page init
+add_action( 'admin_menu', function() use ($settings) {
+	add_options_page( $settings->heading, $settings->menu_label, 'switch_themes', $settings->slug, function() use ($settings) {
 
         if ( !current_user_can( 'administrator' ) ) { return; } // besides the switch_themes above, it is still needed
-
-        $settings = settings_get();
 
         ?>
         <div class="wrap">
@@ -50,20 +58,17 @@ add_action( 'admin_menu', function() {
 });
 
 // print the settings page
-add_action( 'admin_init', function() {
+add_action( 'admin_init', function() use ($fields_structure, $settings) {
 
     if ( !current_user_can( 'administrator' ) ) { return; }
 
-    $settings = settings_get();
     // register and save the settings group
     register_setting( $settings->group, $settings->varname, __NAMESPACE__.'\settings_sanitize' ); // register, save, nonce
 
 
     // print settings
     global $pagenow;
-    if ( $pagenow !== 'options-general.php' || $_GET['page'] !== 'fc-gutenberg-blocks' ) { return; } // get_current_screen() doesn't work here
-
-    $fields_structure = settings_structure();
+    if ( $pagenow !== 'options-general.php' || $_GET['page'] !== $settings->slug ) { return; } // get_current_screen() doesn't work here
 
     $add_field = function( $title, $type = '', $atts = [] ) use ( $settings ) {
 
@@ -113,11 +118,20 @@ add_action( 'admin_init', function() {
 
 });
 
-function settings_sanitize( $values ){
+// fill in the initial settings
+register_activation_hook( FCGB_DIR.'index.php', function() use ($default_values) {
+    add_option( FCGB_PLUGIN, $default_values );
+});
+
+
+
+function settings_sanitize($values) {
 
     //print_r( $values ); exit;
-    $fields_structure = settings_structure();
-    $get_default_values = get_default_values();
+
+    $fields_structure = $GLOBALS[__NAMESPACE__.'\fields_structure'];
+    $default_values = $GLOBALS[__NAMESPACE__.'\default_values'];
+
     
     $filters = [
         'integer' => function($v) {
@@ -156,7 +170,7 @@ function settings_sanitize( $values ){
                 'options' => $atts['options'] ?? null,
                 'option' => $atts['option'] ?? null,
                 'filter' => $atts['filter'] ?? null,
-                'default' => $get_default_values[ $slug ] ?? null, // the fallback value ++for future 'must be filled' values
+                'default' => $default_values[ $slug ] ?? null, // the fallback value ++for future 'must be filled' values
             ]);
         }
     }
@@ -186,12 +200,16 @@ function settings_sanitize( $values ){
 	return $values;
 }
 
-function settings_get() {
-    return (object) [
-        'varname' => FCGB_PLUGIN,
-        'group' => FCGB_PLUGIN.'-group',
-        'page' => FCGB_PLUGIN.'-page',
-        'section' => '',
-        'values' => get_option( FCGB_PLUGIN ),
-    ];
+
+function structure_options_fill($fields_structure, $options = []) {
+
+    // fill in the structure with dynamic options
+    foreach( $fields_structure as &$v ) {
+        foreach ( $v as &$w ) {
+            if ( empty( $w[2] ) || empty( $w[2]['options'] ) || !is_string( $w[2]['options'] ) || strpos( $w[2]['options'], '%' ) !== 0 ) { continue; }
+            $w[2]['options'] = $options[ substr( $w[2]['options'], 1 ) ] ?? [];
+        }
+    }
+
+    return $fields_structure;
 }
