@@ -30,6 +30,7 @@ define( 'FCGB_VER', wp_get_theme()->get( 'Version' ).FCGB_DEV ? time() : '' );
 
 define( 'FCGB_SLUG', 'fc' );
 define( 'FCGB_PREF', FCGB_SLUG.'-' );
+define( 'FCGB_PLUGIN', FCGB_PREF.'-'.'gutenberg' );
 
 define( 'FCGB_URL', plugin_dir_url( __FILE__ ) );
 define( 'FCGB_DIR', plugin_dir_path( __FILE__ ) );
@@ -37,16 +38,16 @@ define( 'FCGB_DIR', plugin_dir_path( __FILE__ ) );
 
 @require_once( __DIR__ . '/inc/functions.php' );
 @require_once( __DIR__ . '/inc/settings.php' );
+@require_once( __DIR__ . '/inc/form-fields.php' );
 @require_once( __DIR__ . '/inc/settings-page.php' );
 
 
 // collect the blocks
-foreach ( scandir( __DIR__ ) as $dir ) {
-  if ( in_array( $dir, ['.', '..', 'inc'] ) || in_array( $dir[0], ['-', '.'] ) ) { continue; }
+list_active_blocks( function($dir) {
   unset( $print_function );
-  @include_once( __DIR__ . '/' . $dir . '/index.php' );
+  @include_once( FCGB_DIR.$dir.'/index.php' );
   enqueue_files( $dir, $print_function ?? null );
-}
+});
 
 
 function enqueue_files($dir, $print_function = null) {

@@ -31,3 +31,14 @@ function slug_to_title($slug) {
     $title = ucwords($title);
     return $title;
 }
+
+function list_active_blocks($func = null) {
+    $collect = [];
+    foreach ( scandir(FCGB_DIR) as $dir ) {
+        if ( !is_dir(FCGB_DIR.$dir) ) { continue; }
+        if ( in_array( $dir, ['.', '..', 'inc'] ) || in_array( $dir[0], ['-', '.'] ) ) { continue; }
+        if ( is_callable($func) ) { $func($dir); }
+        $collect[$dir] = slug_to_title($dir);
+    }
+    return $collect;
+}
