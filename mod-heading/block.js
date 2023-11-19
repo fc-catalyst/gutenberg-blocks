@@ -54,6 +54,7 @@
                     wp.element.Fragment,
                     {},
                     el(BlockEdit, props),
+                    toggle(props, 'text-shadow', 'Add text shadow'),
                     toggle(props, 'heading-decorated', 'Add Decoration'),
                     toggle(props, 'ignore-toc', 'Ignore the Table of Content'),
                 );

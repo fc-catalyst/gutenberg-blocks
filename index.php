@@ -192,3 +192,5 @@ function enqueue_files($dir, $print_function = null) {
 
 // ++add settings page to activate particular blocks
 // ++make index.php independent, only block.js meters
+// ++settings button to plugins list
+// ++publish?
