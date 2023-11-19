@@ -18,7 +18,7 @@ add_filter( 'plugin_action_links_'.FCPPBK_BSN, function($links) {
     $settings_link = '<a href="' . esc_url( admin_url( 'options-general.php?page='.dirname(FCPPBK_BSN) ) ) . '">Settings</a>';
     array_unshift( $links, $settings_link );
     return $links;
-  });
+});
 
 // easy access to reusable blocks/* reusable blocks to the menu */
 add_action( 'admin_menu', function() {

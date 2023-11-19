@@ -1,0 +1,27 @@
+.fc-snor-hero-main {
+    --minHeight: 20px;
+    --backgroundImage: linear-gradient(45deg, #999 -12%, #eee 50%, #999 112%);
+    min-height: var(--minHeight);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.has-background .fc-snor-hero-main {
+    --backgroundImage: none;
+}
+
+.fc-snor-hero-main::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 0 0;
+    z-index: 0;
+    background: var(--backgroundImage) no-repeat center center;
+    background-size: cover;
+}
+
+.fc-snor-hero-main *:first-child {
+    margin-top: 0 !important;
+}
+.fc-snor-hero-main *:last-child {
+    margin-bottom: 0 !important;
+}
