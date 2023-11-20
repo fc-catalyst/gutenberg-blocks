@@ -1,0 +1,15 @@
+.fc-snor-group-imaged-main {
+    --left: 0;
+    --top: 0;
+    --size: 50%;
+    --backgroundImage: none;
+    background: var(--backgroundImage) no-repeat var(--left) var(--top);
+    background-size: var(--size) auto;
+}
+
+.fc-snor-group-imaged-main *:first-child {
+    margin-top: 0 !important;
+}
+.fc-snor-group-imaged-main *:last-child {
+    margin-bottom: 0 !important;
+}
