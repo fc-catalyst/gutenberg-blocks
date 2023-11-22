@@ -1,0 +1,31 @@
+.fc-snor-group-labeled-main {
+    --size: 50%;
+    --left: 0%;
+    --top: 0%;
+    --leftAdd: 0%;
+    --topAdd: 0%;
+    position: relative;
+}
+.fc-snor-group-labeled-main > * {
+    position: relative;
+    z-index: 1;
+}
+
+.fc-snor-group-labeled-label {
+    position: absolute;
+    left: calc(var(--left) + var(--leftAdd));
+    top: calc(var(--top) + var(--topAdd));
+    transform: translate(calc(0% - var(--left)), calc(0% - var(--top)));
+    z-index: 0;
+    width: var(--size);
+    height: auto;
+    max-height: 100%;
+    overflow: hidden;
+}
+
+.fc-snor-group-labeled-main *:first-child {
+    margin-top: 0 !important;
+}
+.fc-snor-group-labeled-main *:last-child {
+    margin-bottom: 0 !important;
+}
