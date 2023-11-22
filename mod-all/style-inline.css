@@ -4,5 +4,17 @@
     }
 }
 .add-shadow {
-    box-shadow: 0px 4px 40px 0px #00000026;
+    box-shadow: 0px 3px 30px 0px #0000000D;
+}
+
+/* buttons fixes.. where else */
+.wp-block-buttons a {
+    text-align: left;
+}
+.wp-block-buttons.is-content-justification-center a,
+.wp-block-buttons.is-content-justification-space-between a {
+    text-align: center;
+}
+.wp-block-buttons.is-content-justification-right a {
+    text-align: right;
 }
