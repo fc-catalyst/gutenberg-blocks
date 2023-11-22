@@ -1,10 +1,33 @@
 .fc-snor-group-imaged-main {
-    --left: 0;
-    --top: 0;
     --size: 50%;
-    --backgroundImage: none;
-    background: var(--backgroundImage) no-repeat var(--left) var(--top);
-    background-size: var(--size) auto;
+    --left: 0%;
+    --top: 0%;
+    --leftAdd: 0%;
+    --topAdd: 0%;
+    --transitX: 0%;
+    --transitY: 0%;
+    position: relative;
+}   
+.fc-snor-group-imaged-main > * {
+    position: relative;
+    z-index: 1;
+}
+
+.fc-snor-group-imaged-img-holder {
+    position: absolute;
+    left: calc(var(--left) + var(--leftAdd));
+    top: calc(var(--top) + var(--topAdd));
+    transform: translate(calc(0% - var(--left)), calc(0% - var(--top)));
+    z-index: 0;
+    width: var(--size);
+    height: auto;
+    max-height: 100%;
+    overflow: hidden;
+}
+.fc-snor-group-imaged-img-holder img {
+    width: 100%;
+    height: auto;
+    transform: translate(var(--transitX), var(--transitY));
 }
 
 .fc-snor-group-imaged-main *:first-child {

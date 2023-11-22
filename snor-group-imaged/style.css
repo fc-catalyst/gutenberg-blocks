@@ -1,8 +1,11 @@
 .fc-snor-group-imaged-main {
+    --size: 50%;
     --left: 0%;
     --top: 0%;
-    --size: 50%;
-    --backgroundImage: none;
+    --leftAdd: 0%;
+    --topAdd: 0%;
+    --transitX: 0%;
+    --transitY: 0%;
     position: relative;
 }
 .fc-snor-group-imaged-main > * {
@@ -10,22 +13,21 @@
     z-index: 1;
 }
 
-.fc-snor-group-imaged-image {
-    content: '';
+.fc-snor-group-imaged-img-holder {
     position: absolute;
-    left: var(--left);
-    top: var(--top);
+    left: calc(var(--left) + var(--leftAdd));
+    top: calc(var(--top) + var(--topAdd));
     transform: translate(calc(0% - var(--left)), calc(0% - var(--top)));
     z-index: 0;
     width: var(--size);
     height: auto;
     max-height: 100%;
-    border:1px dotted red;
     overflow: hidden;
 }
-.fc-snor-group-imaged-image img {
+.fc-snor-group-imaged-img-holder img {
     width: 100%;
     height: auto;
+    transform: translate(var(--transitX), var(--transitY));
 }
 
 .fc-snor-group-imaged-main *:first-child {
