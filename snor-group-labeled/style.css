@@ -19,8 +19,6 @@
     z-index: 0;
     width: var(--size);
     height: auto;
-    max-height: 100%;
-    overflow: hidden;
 }
 
 .fc-snor-group-labeled-main *:first-child {

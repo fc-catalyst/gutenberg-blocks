@@ -22,11 +22,11 @@
 			},
 			size: {
 				type: 'number',
-				default: 50
+				default: 30
 			},
 			left: {
 				type: 'number',
-				default: 0
+				default: 80
 			},
 			leftAdd: {
 				type: 'number',
@@ -38,7 +38,7 @@
 			},
 			topAdd: {
 				type: 'number',
-				default: 0
+				default: -40
 			}
 		},
 
@@ -69,10 +69,13 @@
 				el( wp.blockEditor.InnerBlocks, {
 					template: [
 						['core/group', {}, [
-							['core/paragraph', { content: 'Main content' }],
+							['core/paragraph', { content: 'The block content' }],
 						]],
-						['core/group', { className: `${prefix}label` }, [
-							['core/paragraph', { content: 'Sub content' }],
+						['core/group', { className: `${prefix}label`, style:{
+								spacing: { padding: { top: "20px", right: "10px", bottom: "20px", left: "10px" } },
+								border:{ radius: "8px", width: "1px", style: "solid", color: "red" }
+							}}, [
+							['core/paragraph', { content: 'Label', align:"center" }],
 						]],
 					],
 					templateLock: false,
