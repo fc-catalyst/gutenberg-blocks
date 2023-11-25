@@ -18,15 +18,19 @@
 		attributes: {
 			termin_new_available: {
 				type: 'boolean',
+				default: true,
 			},
 			address: {
 				type: 'string',
+				default: '',
 			},
 			video_available: {
 				type: 'boolean',
+				default: true,
 			},
 			link: {
 				type: 'string',
+				default: '',
 			}
 		},
 
@@ -40,7 +44,21 @@
 			return el( 'div',
 				{ className: `${props.className} ${prefix}main` },
 				el('header', {},
-					el('h2', {Content: 'Das Wichtigste im Überblick'})
+					el('h2', {}, 'Das Wichtigste im Überblick' )
+				),
+				el('div', {className: `${prefix}content`},
+					props.attributes.termin_new_available
+						? el('div', {className: `${prefix}termin`}, el('p', {}, 'Online-Buchung auch für Neupatient:innen möglich'))
+						: null,
+					props.attributes.address.trim()
+						? el('div', {className: `${prefix}address`}, el('p', {}, props.attributes.address))
+						: null,
+					props.attributes.video_available
+						? el('div', {className: `${prefix}video`}, el('p', {}, 'Videosprechstunde verfügbar'))
+						: null,
+					props.attributes.link.trim()
+						? el('div', {className: `${prefix}book-button`}, el('a', {href: props.attributes.link, target: '_blank', rel: 'noopener noreferrer'}, 'Termin buchen'))
+						: null,
 				),
 				el( wp.element.Fragment, // sidebar
 				{},
@@ -50,21 +68,21 @@
 							label: 'Online-Buchung auch für Neupatient:innen möglich',
 							checked: props.attributes.termin_new_available || false,
 							onChange: () => {
-								props.setAttributes({ termin_new_available: value });
+								props.setAttributes({ termin_new_available: !props.attributes.termin_new_available });
 							}
 						}),
 						el( wp.components.TextControl, {
 							label: 'Addresse',
 							value: props.attributes.address || '',
 							onChange: value => {
-								props.setAttributes( { address: value } );
+								props.setAttributes( { address: value.trim() } );
 							},
 						}),
 						el(wp.components.ToggleControl, {
 							label: 'Videosprechstunde verfügbar',
-							checked: props.attributes.termin_new_available || false,
+							checked: props.attributes.video_available || false,
 							onChange: () => {
-								props.setAttributes({ termin_new_available: value });
+								props.setAttributes({ video_available: !props.attributes.video_available });
 							}
 						}),
 						el( wp.components.TextControl, {
@@ -82,8 +100,23 @@
 		save: props => {
             return el( 'div',
 				{ className: `${prefix}main` },
-                el( wp.blockEditor.InnerBlocks.Content ),
-				link || span
+				el('header', {},
+					el('h2', {}, 'Das Wichtigste im Überblick' )
+				),
+				el('div', {className: `${prefix}content`},
+					props.attributes.termin_new_available
+						? el('div', {className: `${prefix}termin`}, el('p', {}, 'Online-Buchung auch für Neupatient:innen möglich'))
+						: null,
+					props.attributes.address.trim()
+						? el('div', {className: `${prefix}address`}, el('p', {}, props.attributes.address))
+						: null,
+					props.attributes.video_available
+						? el('div', {className: `${prefix}video`}, el('p', {}, 'Videosprechstunde verfügbar'))
+						: null,
+					props.attributes.link.trim()
+						? el('div', {className: `${prefix}book-button`}, el('a', {href: props.attributes.link, target: '_blank', rel: 'noopener noreferrer'}, 'Termin buchen'))
+						: null,
+				),
             );
 		},
 	} );
