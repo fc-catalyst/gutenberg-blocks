@@ -1,0 +1,36 @@
+.fc-snor-hidden-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    width: fit-content;
+    margin: 0 0 0 auto;
+    padding: 12px 24px;
+    box-sizing: border-box;
+    position: relative;
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #2d668c;
+}
+.fc-snor-hidden-label::after {
+    content: '';
+    width: 60px;
+    height: 60px;
+    border: 1px solid #2d668c;
+    border-radius: 50%;
+}
+.fc-snor-hidden-label::before {
+    content: '';
+    width: 19px;
+    height: 19px;
+    border: 1px solid #2d668c;
+    border-width: 1px 1px 0 0;
+    position: absolute;
+    right: 45px;
+    top: 28px;
+    transform: rotate(135deg);
+}
+.wp-block:not(.is-selected) .fc-snor-hidden-content {
+    opacity: 0.6;
+}
