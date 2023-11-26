@@ -86,12 +86,12 @@
     width: 100%;
     border-radius: 8px;
     padding: 8px;
+    line-height: 1.4;
     font-weight: 700;
     text-transform: uppercase;
     text-decoration: none;
     background-color: #53af5f;
     color: #fff;
-
 }
 .fc-doctolib-badge-big-book-button a::before {
     content: '';
@@ -110,9 +110,10 @@
 
 /* for particular purpose of hno footer */
 @media (min-width: 781px) {
-    .fc-doctolib-badge-big-main.cunning-position {
+    .wp-block-column .fc-doctolib-badge-big-main.cunning-position {
         position: absolute;
+        width: 100%;
+        max-width: 400px;
         transform: translateY(-100%);
-        min-width: 400px;
     }
 }
