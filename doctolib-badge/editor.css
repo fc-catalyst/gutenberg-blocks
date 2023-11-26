@@ -1,6 +1,9 @@
+.fc-doctolib-badge-main {
+    background-color: #fff;
+    border-radius: 8px;
+}
 .fc-doctolib-badge-main,
 .fc-doctolib-badge-main * {
-    border-radius: 8px;
     box-sizing: border-box;
     font-family: Roboto, arial, sans-serif;
     font-size: 14px;
@@ -9,7 +12,6 @@
 .fc-doctolib-badge-main header {
     padding: 16px;
     border-bottom: 1px solid #dae0e7;
-    border-radius: 0;
 }
 .fc-doctolib-badge-main header h2 {
     margin: 0;
@@ -62,8 +64,9 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: 8px;
     margin-top: 16px;
+    border-radius: 8px;
+    padding: 8px;
     font-weight: 700;
     text-transform: uppercase;
     text-decoration: none;
