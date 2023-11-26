@@ -107,3 +107,10 @@
 .fc-doctolib-badge-big-book-button a:hover {
     background-color: #469350;
 }
+
+/* for particular purpose of hno footer */
+.fc-doctolib-badge-big-main.cunning-position {
+    position: absolute;
+    transform: translateY(-100%);
+    min-width: 400px;
+}
