@@ -41,6 +41,14 @@
         },
 
 		edit: props => {
+
+			const breakLines = text => {
+				return text.split('\n').map((line, index) => [
+					el('span', { key: index }, line),
+					index < text.split('\n').length - 1 && el('br')
+				]);
+			};
+
 			return el( 'div',
 				{ className: `${props.className} ${prefix}main` },
 				el('header', {},
@@ -51,7 +59,8 @@
 						? el('div', {className: `${prefix}termin`}, el('p', {}, 'Online-Buchung auch für Neupatient:innen möglich'))
 						: null,
 					props.attributes.address.trim()
-						? el('div', {className: `${prefix}address`}, el('p', {}, props.attributes.address))
+						//? el('div', {className: `${prefix}address`}, el('p', {dangerouslySetInnerHTML: { __html: props.attributes.address.replace(/\n/g, '<br>')}}))
+						? el('div', {className: `${prefix}address`}, el('p', {}, breakLines(props.attributes.address)))
 						: null,
 					props.attributes.video_available
 						? el('div', {className: `${prefix}video`}, el('p', {}, 'Videosprechstunde verfügbar'))
@@ -71,7 +80,7 @@
 								props.setAttributes({ termin_new_available: !props.attributes.termin_new_available });
 							}
 						}),
-						el( wp.components.TextControl, {
+						el( wp.components.TextareaControl, {
 							label: 'Addresse',
 							value: props.attributes.address || '',
 							onChange: value => {
