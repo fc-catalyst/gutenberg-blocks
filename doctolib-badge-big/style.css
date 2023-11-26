@@ -109,7 +109,7 @@
 }
 
 /* for particular purpose of hno footer */
-@media (max-width: 781px) {
+@media (min-width: 781px) {
     .fc-doctolib-badge-big-main.cunning-position {
         position: absolute;
         transform: translateY(-100%);
