@@ -2,6 +2,12 @@
 
 	const el = wp.element.createElement;
 
+	const breakLines = text => {
+		return text.split('\n').map((line, index) => [
+			el('span', { key: index }, line),
+			index < text.split('\n').length - 1 && el('br')
+		]);
+	};
 
 	wp.blocks.registerBlockType( blockName, {
 		title,
@@ -41,14 +47,6 @@
         },
 
 		edit: props => {
-
-			const breakLines = text => {
-				return text.split('\n').map((line, index) => [
-					el('span', { key: index }, line),
-					index < text.split('\n').length - 1 && el('br')
-				]);
-			};
-
 			return el( 'div',
 				{ className: `${props.className} ${prefix}main` },
 				el('header', {},
@@ -117,7 +115,7 @@
 						? el('div', {className: `${prefix}termin`}, el('p', {}, 'Online-Buchung auch für Neupatient:innen möglich'))
 						: null,
 					props.attributes.address.trim()
-						? el('div', {className: `${prefix}address`}, el('p', {}, props.attributes.address))
+						? el('div', {className: `${prefix}address`}, el('p', {}, breakLines(props.attributes.address)))
 						: null,
 					props.attributes.video_available
 						? el('div', {className: `${prefix}video`}, el('p', {}, 'Videosprechstunde verfügbar'))
