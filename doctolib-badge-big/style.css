@@ -109,8 +109,10 @@
 }
 
 /* for particular purpose of hno footer */
-.fc-doctolib-badge-big-main.cunning-position {
-    position: absolute;
-    transform: translateY(-100%);
-    min-width: 400px;
+@media (max-width: 781px) {
+    .fc-doctolib-badge-big-main.cunning-position {
+        position: absolute;
+        transform: translateY(-100%);
+        min-width: 400px;
+    }
 }
