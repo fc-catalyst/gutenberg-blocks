@@ -31,6 +31,6 @@
     top: 28px;
     transform: rotate(135deg);
 }
-.wp-block:not(.is-selected) .fc-snor-hidden-content {
-    opacity: 0.6;
+.wp-block:not(.is-selected, .has-child-selected) > .fc-snor-hidden-main .fc-snor-hidden-content {
+    opacity: 0.4;
 }
