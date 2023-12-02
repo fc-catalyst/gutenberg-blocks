@@ -2,13 +2,6 @@
 
 	const el = wp.element.createElement;
 
-	const breakLines = text => {
-		return text.split('\n').map((line, index) => [
-			el('span', { key: index }, line),
-			index < text.split('\n').length - 1 && el('br')
-		]);
-	};
-
 	wp.blocks.registerBlockType( blockName, {
 		title,
         icon: iconSrc
@@ -25,6 +18,10 @@
 			buttonText: {
 				type: 'string',
 				default: 'Pro & Contra anzeigen',
+			},
+			id: {
+				type: 'string',
+				default: '',
 			}
 		},
 
@@ -32,6 +29,7 @@
         },
 
 		edit: props => {
+			props.attributes.id = `${prefix}${Math.random().toString(36).substring(2, 11)}`;
 			return el( 'div',
 				{ className: `${props.className} ${prefix}main` },
 				el('label', {className: `${prefix}label`}, props.attributes.buttonText),
@@ -64,11 +62,10 @@
 			);
 		},
 		save: props => {
-			const id = `${prefix}${Math.random().toString(36).substring(2, 11)}`;
             return el( 'div',
 				{ className: `${prefix}main` },
-				el('input', {type: 'checkbox', className: `${prefix}trigger`, id} ),
-				el('label', {className: `${prefix}label`, for: id}, props.attributes.buttonText),
+				el('input', {type: 'checkbox', className: `${prefix}trigger`, id: props.attributes.id} ),
+				el('label', {className: `${prefix}label`, htmlFor: props.attributes.id}, props.attributes.buttonText),
 				el('div', {className: `${prefix}content`},
 					el( wp.blockEditor.InnerBlocks.Content ),
 				),
