@@ -129,24 +129,6 @@
 								min: -100,
 								max: 100
 							}),
-							el( wp.components.RangeControl, {
-								label: 'Crop X %',
-								value: props.attributes.transitX || 0,
-								onChange: value => {
-									props.setAttributes( { transitX: value } );
-								},
-								min: -100,
-								max: 100
-							}),
-							el( wp.components.RangeControl, {
-								label: 'Crop Y %',
-								value: props.attributes.transitY || 0,
-								onChange: value => {
-									props.setAttributes( { transitY: value } );
-								},
-								min: -100,
-								max: 100
-							})
 						)
 					),
 				)
