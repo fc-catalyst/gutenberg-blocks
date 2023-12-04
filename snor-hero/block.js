@@ -98,7 +98,7 @@
 				{ className: `${props.className} ${prefix}main`, style },
 				el( wp.blockEditor.InnerBlocks, {
                     allowedBlocks: [
-                        'core/heading', 'core/paragraph', 'core/buttons', 'core/spacer'
+                        'core/group', 'core/heading', 'core/paragraph', 'core/buttons', 'core/spacer'
                     ],
                     template: [
                         [ 'core/heading', {level: 1, textAlign: 'center'} ]
