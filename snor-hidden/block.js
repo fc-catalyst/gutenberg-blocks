@@ -36,7 +36,7 @@
 				el('div', {className: `${prefix}content`},
 					el( wp.blockEditor.InnerBlocks, {
 						allowedBlocks: [
-							'core/heading', 'core/paragraph', 'core/list', 'core/buttons', 'core/spacer', 'core/table'
+							'core/heading', 'core/paragraph', 'core/list', 'core/buttons', 'core/spacer', 'core/table', 'core/separator', 'core/spacer'
 						],
 						template: [
 							[ 'core/paragraph', {} ],
