@@ -1,0 +1,5 @@
+@media(min-width:782px) {
+    .desktop-reverse {
+        flex-direction: row-reverse;
+    }
+}
