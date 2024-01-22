@@ -20,6 +20,10 @@
                 type: 'array',
                 default: []
             },
+			imgPosRight: {
+				type: 'boolean',
+				defulat: false
+			},
 			link: {
 				type: 'string',
 			},
@@ -90,7 +94,7 @@
             };
 
 			return el( 'div',
-				{ className: `${props.className} ${prefix}main` },
+				{ className: `${props.className} ${prefix}main ${props.attributes.imgPosRight ? `${prefix}image-right` : ''}` },
 				el( ...mediaBox(0) ),
 				el( wp.blockEditor.InnerBlocks, {
                     allowedBlocks: [
@@ -114,6 +118,13 @@
 								props.setAttributes( { link: value } );
 							},
 						}),
+						el( wp.components.ToggleControl, {
+							label: 'Image Position Right',
+							checked: props.attributes.imgPosRight,
+							onChange: () => {
+								props.setAttributes({ imgPosRight: !props.attributes.imgPosRight });
+							},
+						}),
 					)
 				)
 			)
@@ -130,7 +141,7 @@
 				? el( 'span', { className: `${prefix}image` }, image )
 				: null;
             return el( 'div',
-				{ className: `${prefix}main` },
+				{ className: `${prefix}main ${props.attributes.imgPosRight ? `${prefix}image-right` : ''}` },
                 el( wp.blockEditor.InnerBlocks.Content ),
 				link || span
             );

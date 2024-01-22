@@ -26,7 +26,7 @@ namespace FC\GutenbergBlocks;
 defined( 'ABSPATH' ) || exit;
 
 define( 'FCGB_DEV', false ); // developer mode for not caching the js and css
-define( 'FCGB_VER', wp_get_theme()->get( 'Version' ).FCGB_DEV ? time() : '' );
+define( 'FCGB_VER', '0.1.2'.FCGB_DEV ? time() : '' );
 
 define( 'FCGB_SLUG', 'fc' );
 define( 'FCGB_PREF', FCGB_SLUG.'-' );

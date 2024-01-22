@@ -17,6 +17,7 @@
     min-height: 240px;
     position: absolute;
     left: -50px;
+    right: auto;
     top: 50%;
     transform: translateY(-50%);
     z-index: 1;
@@ -39,6 +40,20 @@
     height: auto;
     box-shadow: -4px 6px 18px #00000040;
 }
+
+
+/* alt img position */
+.fc-reis-author-box-main.fc-reis-author-box-image-right {
+    padding: 30px 220px 30px 40px;
+}
+
+.fc-reis-author-box-main.fc-reis-author-box-image-right .fc-reis-author-box-image {
+    left: auto;
+    right: -50px;
+}
+
+
+/* common */
 
 .fc-reis-author-box-main *:first-child {
     margin-top: 0 !important;
