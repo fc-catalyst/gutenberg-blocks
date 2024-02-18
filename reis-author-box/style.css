@@ -25,7 +25,8 @@
 }
 
 .fc-reis-author-box-image > img {
-    width: auto;
+    width: 100%;
+    max-width: 400px;
     height: auto;
     box-shadow: -4px 6px 18px #00000040;
 }
