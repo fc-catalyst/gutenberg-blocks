@@ -23,22 +23,24 @@
     z-index: 1;
     text-align: center;
 }
+
+.fc-reis-author-box-image > img {
+    width: auto;
+    height: auto;
+    box-shadow: -4px 6px 18px #00000040;
+}
+
 @media(max-width:767px) {
     .fc-reis-author-box-main {
         padding-left: 40px;
     }
     .fc-reis-author-box-image {
         display: block;
-        margin-bottom: 30px;
+        width: 100%;
+        margin:30px auto;
         position: static;
         transform: none;
     }
-}
-
-.fc-reis-author-box-image > img {
-    width: 240px;
-    height: auto;
-    box-shadow: -4px 6px 18px #00000040;
 }
 
 
@@ -50,6 +52,11 @@
 .fc-reis-author-box-main.fc-reis-author-box-image-right .fc-reis-author-box-image {
     left: auto;
     right: -50px;
+}
+@media(max-width:767px) {
+    .fc-reis-author-box-main.fc-reis-author-box-image-right {
+        padding-right: 40px;
+    }
 }
 
 
