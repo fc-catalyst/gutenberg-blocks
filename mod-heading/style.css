@@ -10,6 +10,11 @@
     bottom: 0;
     left: 0;
 }
+@media(max-width:690px) {
+    .heading-decorated::after {
+        left: var(--wp--preset--spacing--30);
+    }
+}
 .heading-decorated.has-text-align-center::after {
     left: 50%;
     transform: translate(-50%);
