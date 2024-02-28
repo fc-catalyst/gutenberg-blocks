@@ -54,7 +54,6 @@
                     {},
                     el(BlockEdit, props),
                     toggle(props, 'hide-on-mobile', 'Hide on Mobile'),
-                    toggle(props, 'add-shadow', 'Add shadow'),
                 );
             };
         })
