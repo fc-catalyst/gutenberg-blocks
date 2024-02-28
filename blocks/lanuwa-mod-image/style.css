@@ -1,0 +1,5 @@
+@media(min-width:782px) {
+    .standout-left-1 {
+        transform: translateX(-54px);
+    }
+}
