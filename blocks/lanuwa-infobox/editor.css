@@ -1,0 +1,52 @@
+.fc-lanuwa-infobox-main {
+    --blockWidth: var(--wp--style--global--wide-size);
+    --sideImage: linear-gradient(45deg, #999 -12%, #eee 50%, #999 112%);
+    --offset: 280px;
+    border: 1px solid var(--wp--preset--color--primary);
+    width: 100%;
+    max-width: var(--blockWidth);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: calc(var(--offset) + 20px);
+    padding-right: 40px;
+    box-sizing: border-box;
+}
+
+.fc-lanuwa-infobox-main::before {
+    content: '';
+    position: absolute;
+    inset: 50% auto auto auto;
+    width: var(--offset);
+    height: 100%;
+    transform: translate(calc(var(--offset) * -1 - 40px - 20px), -50%);
+    z-index: 0;
+    background: var(--sideImage) no-repeat center center;
+    background-size: contain;
+}
+
+.fc-lanuwa-infobox-main *:first-child {
+    margin-top: 0 !important;
+}
+.fc-lanuwa-infobox-main *:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* additional styling for the inner elements */
+.fc-lanuwa-infobox-main ul {
+    list-style: none;
+}
+.fc-lanuwa-infobox-main li {
+    padding-left: 20px;
+}
+.fc-lanuwa-infobox-main li:before {
+    content: '-';
+    position: absolute;
+    inset: 0 auto auto 0;
+}
+.fc-lanuwa-infobox-main p {
+    padding-left: 20px;
+}
+.fc-lanuwa-infobox-main a {
+    color: var(--wp--preset--color--contrast);
+    border-bottom: 1px solid var(--wp--preset--color--primary);
+}
