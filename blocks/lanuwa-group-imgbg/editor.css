@@ -1,0 +1,36 @@
+.fc-lanuwa-group-imgbg-main {
+    --imgWidth: 100%;
+    --imgPosition: 0%;
+    --backgroundImage: linear-gradient(45deg, #999 -12%, #eee 50%, #999 112%);
+}
+
+.fc-lanuwa-group-imgbg-main::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 var(--imgPosition);
+    width: var(--imgWidth);
+    transform: translateX(calc(var(--imgPosition) * -1));
+    z-index: 0;
+    background: var(--backgroundImage) no-repeat center center;
+    background-size: cover;
+}
+
+.fc-lanuwa-group-imgbg-main *:first-child {
+    margin-top: 0 !important;
+}
+.fc-lanuwa-group-imgbg-main *:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* fixng aligning */
+.fc-lanuwa-group-imgbg-main .block-editor-block-list__layout > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+    max-width: var(--wp--style--global--content-size);
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+.fc-lanuwa-group-imgbg-main .block-editor-block-list__layout > .alignwide {
+    max-width: var(--wp--style--global--wide-size);
+}
+.fc-lanuwa-group-imgbg-main .block-editor-block-list__layout > .alignfull {
+    max-width: none;
+}
