@@ -6,7 +6,7 @@
 .heading-decorated::after {
     content: '';
     width: 165px;
-    border-bottom: 1px solid #f29400;
+    border-bottom: 1px solid var(--wp--preset--color--primary);
     position: absolute;
     bottom: 0;
     left: 0;
@@ -18,4 +18,8 @@
 .heading-decorated.has-text-align-right::after {
     left: auto;
     right: 0;
+}
+
+h1.heading-decorated::after {
+    border-color: var(--wp--preset--color--contrast);
 }
