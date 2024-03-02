@@ -1,0 +1,55 @@
+.fc-lanuwa-author-box-main {
+    --blockWidth: 630px;
+    --sideImage: linear-gradient(45deg, #999 -12%, #eee 50%, #999 112%);
+    --offset: 140px;
+    --gap: 30px;
+    width: 100%;
+    max-width: var(--blockWidth);
+    min-height: var(--offset);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: calc(var(--offset) + var(--gap));
+    box-sizing: border-box;
+}
+
+.fc-lanuwa-author-box-main::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto auto auto;
+    transform: translateX(calc(var(--offset) * -1 - var(--gap)));
+    width: var(--offset);
+    height: 100%;
+    z-index: 0;
+    background: var(--sideImage) no-repeat center top;
+    background-size: contain;
+}
+
+.fc-lanuwa-author-box-label {
+    margin-bottom: 10px;
+    font-family: Raleway, sans-serif;
+    font-weight: 100;
+}
+.fc-lanuwa-author-box-label::before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    width: 38px;
+    height: 38px;
+    margin-right: 12px;
+    background: transparent no-repeat left center;
+    background-image: url("data:image/svg+xml,%3Csvg width='38' height='38' viewBox='0 0 38 38' version='1.1' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23f4cb9e' stroke='none' d='M 32.435029,32.435029 27.48136,31.69325 26.270981,36.55371 21.978253,33.972708 18.999997,37.999999 16.021739,33.972709 11.729012,36.55371 10.518638,31.69325 5.5649682,32.435028 6.3067469,27.481359 1.4462873,26.27098 4.027289,21.978253 -1.0744885e-6,18.999996 4.0272879,16.021739 1.446287,11.729011 6.3067473,10.518637 5.5649693,5.5649678 10.518639,6.3067461 11.729018,1.446287 16.021745,4.0272883 19.000002,-1.4015806e-6 21.978259,4.0272875 l 4.292728,-2.5810009 1.210374,4.8604603 4.953669,-0.741778 -0.741778,4.9536691 4.860459,1.210379 -2.581002,4.292727 4.02729,2.978257 -4.027288,2.978257 2.581001,4.292728 -4.860461,1.210374 z' /%3E%3Ccircle fill='%23ea983e' stroke='none' cx='18.893978' cy='19.380779' r='15.412805' /%3E%3Cpath fill='none' stroke='%23fff' stroke-width='2.5' d='m 11.372971,17.003712 5.461399,5.461398 8.535692,-8.535692'%0A/%3E%3C/svg%3E%0A");
+    background-size: contain;
+}
+
+.fc-lanuwa-author-box-main *:first-child {
+    margin-top: 0 !important;
+}
+.fc-lanuwa-author-box-main *:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* additional styling for the inner elements */
+.fc-lanuwa-author-box-main a {
+    font-weight: 400;
+    color: var(--wp--preset--color--contrast);
+}
