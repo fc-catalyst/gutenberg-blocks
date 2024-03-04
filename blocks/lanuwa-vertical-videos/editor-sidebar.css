@@ -1,0 +1,49 @@
+.fc-lanuwa-vertical-videos-main {
+    --sideImage: linear-gradient(45deg, #999 -12%, #eee 50%, #999 112%);
+    --sideSelected: linear-gradient(45deg, var(--wp--preset--color--light-green-cyan) -12%, #eee 50%, var(--wp--preset--color--light-green-cyan) 112%);
+}
+
+
+/* image button styling */
+.fc-lanuwa-vertical-videos-main .select-media {
+    display: block;
+    width: 100%;
+    height: auto;
+    position: relative;
+    text-align: center;
+}
+.fc-lanuwa-vertical-videos-main .select-media.empty-media {
+    background: var(--sideImage);
+}
+.fc-lanuwa-vertical-videos-main .select-media:not(.empty-media) {
+    padding: 0;
+    background: var(--sideSelected);
+}
+.fc-lanuwa-vertical-videos-main .select-media > img,
+.fc-lanuwa-vertical-videos-main .select-media > span {
+    width: 100%;
+    height: auto;
+}
+
+.fc-lanuwa-vertical-videos-main .select-media:not(.empty-media) .video {
+    display: block;
+    padding: 12px;
+    word-wrap: break-word;
+}
+
+.fc-lanuwa-vertical-videos-main button.clear-media {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+    appearance: none;
+    font-size: 20px;
+    line-height: 1;
+    border-radius: 50%;
+    border: none;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+.fc-lanuwa-vertical-videos-main button.clear-media:hover {
+    color: red;
+}

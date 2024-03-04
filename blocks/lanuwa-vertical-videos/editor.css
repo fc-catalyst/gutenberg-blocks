@@ -1,0 +1,97 @@
+.fc-lanuwa-vertical-videos-group-main {
+    --cols: 2;
+    --colgap: 30px;
+    --bias: 20px;
+    --colwidth: calc((100% - ((var(--cols) - 1) * var(--colgap))) / var(--cols));
+    --sideImage: linear-gradient(45deg, #999 -12%, #eee 50%, #999 112%);
+    --sideSelected: linear-gradient(45deg, var(--wp--preset--color--light-green-cyan) -12%, #eee 50%, var(--wp--preset--color--light-green-cyan) 112%);
+    
+}
+.fc-lanuwa-vertical-videos-group-main > .block-editor-inner-blocks > .block-editor-block-list__layout {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: space-around;
+    column-gap: var(--colgap);
+    row-gap: calc(var(--colgap) + var(--bias));
+}
+.fc-lanuwa-vertical-videos-group-main > .block-editor-inner-blocks > .block-editor-block-list__layout > div {
+    flex-basis: var(--colwidth);
+    margin: 0;
+}
+
+
+.fc-lanuwa-vertical-videos-main {
+    display: flex;
+    column-gap: 4%;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+    padding: 0 3%;
+    box-sizing: border-box;
+}
+
+.fc-lanuwa-vertical-videos-main > .block-editor-inner-blocks {
+    flex: 1;
+}
+.fc-lanuwa-vertical-videos-main > .video {
+    flex: 1;
+    width: 100%;
+    max-width: 320px;
+    position: relative;
+    background: var(--sideImage);
+    transform: translateY(calc(var(--bias) * -1));
+    line-height: 0;
+}
+.fc-lanuwa-vertical-videos-main > .video > div {
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 0 0 calc(16 * 100% / 9);
+}
+.fc-lanuwa-vertical-videos-main > .video > div > span {
+    position: absolute;
+    inset: 50% 0 auto 0;
+    transform: translateY(-50%);
+    text-align: center;
+    line-height: 1.5;
+}
+
+.fc-lanuwa-vertical-videos-main > .video.video-selected {
+    background: var(--sideSelected);
+}
+
+/* many columns */
+.fc-lanuwa-vertical-videos-group-main.stretched-layout .fc-lanuwa-vertical-videos-main {
+    flex-direction: column-reverse;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 320px;
+}
+.fc-lanuwa-vertical-videos-group-main.stretched-layout .fc-lanuwa-vertical-videos-main > .block-editor-inner-blocks {
+    max-width: 94%;
+}
+.fc-lanuwa-vertical-videos-group-main.stretched-layout .fc-lanuwa-vertical-videos-main > .block-editor-inner-blocks > .block-editor-block-list__layout {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.fc-lanuwa-vertical-videos-group-main.stretched-layout .fc-lanuwa-vertical-videos-main > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block-button,
+.fc-lanuwa-vertical-videos-group-main.stretched-layout .fc-lanuwa-vertical-videos-main > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block-buttons {
+    margin-top: auto;
+}
+
+
+.fc-lanuwa-vertical-videos-main .block-editor-block-list__layout > *:first-child {
+    margin-top: 0 !important;
+}
+.fc-lanuwa-vertical-videos-main .block-editor-block-list__layout > *:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* additional styling for the inner elements */
+.fc-lanuwa-vertical-videos-main a {
+    font-weight: 400;
+    color: var(--wp--preset--color--contrast);
+}
