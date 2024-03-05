@@ -11,13 +11,8 @@
     row-gap: calc(var(--colgap) + var(--bias));
 }
 
-.fc-lanuwa-vertical-videos-group-main > * {
-    flex-basis: var(--colwidth);
-    margin: 0;
-}
-
-
 .fc-lanuwa-vertical-videos-main {
+    flex-basis: var(--colwidth);
     display: flex;
     column-gap: 4%;
     align-items: center;
@@ -25,6 +20,19 @@
     width: 100%;
     padding: 0 3%;
     box-sizing: border-box;
+}
+@media screen and (max-width: 799px) {
+    .fc-lanuwa-vertical-videos-group-layout-horisontal {
+        --cols: 1 !important;
+    }
+}
+@media screen and (max-width: 499px) {
+    .fc-lanuwa-vertical-videos-main {
+        flex-direction: column-reverse;
+        margin: 0 auto;
+        padding: 0;
+        max-width: 320px;
+    }
 }
 
 .fc-lanuwa-vertical-videos-main > * {
@@ -43,6 +51,7 @@
     content: '';
     display: block;
     width: 100%;
+    min-width: 150px;
     height: auto;
     padding: 0 0 calc(16 * 100% / 9);
 }
@@ -59,21 +68,32 @@
     row-gap: 18px;
 }
 
-/* stretched */
-.fc-lanuwa-vertical-videos-group-stretched .fc-lanuwa-vertical-videos-main {
+/* vertical */
+@media screen and (max-width: 999px) {
+    .fc-lanuwa-vertical-videos-group-layout-vertical {
+        --cols: 2 !important;
+    }
+}
+@media screen and (max-width: 599px) {
+    .fc-lanuwa-vertical-videos-group-layout-vertical {
+        --cols: 1 !important;
+    }
+}
+.fc-lanuwa-vertical-videos-group-layout-vertical .fc-lanuwa-vertical-videos-main {
     flex-direction: column-reverse;
     margin: 0 auto;
     padding: 0;
-    max-width: 320px;
 }
 
-.fc-lanuwa-vertical-videos-group-stretched .fc-lanuwa-vertical-videos-content {
+.fc-lanuwa-vertical-videos-group-layout-vertical .fc-lanuwa-vertical-videos-content {
     display: flex;
     flex-direction: column;
+    max-width: 320px;
     height: 100%;
     padding: 0 15px;
+    box-sizing: border-box;
 }
-.fc-lanuwa-vertical-videos-group-stretched .fc-lanuwa-vertical-videos-content > .wp-block-button,
-.fc-lanuwa-vertical-videos-group-stretched .fc-lanuwa-vertical-videos-content > .wp-block-buttons {
+.fc-lanuwa-vertical-videos-group-layout-vertical .fc-lanuwa-vertical-videos-content > .wp-block-button,
+.fc-lanuwa-vertical-videos-group-layout-vertical .fc-lanuwa-vertical-videos-content > .wp-block-buttons {
     margin-top: auto;
 }

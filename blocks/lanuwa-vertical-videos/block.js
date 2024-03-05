@@ -153,6 +153,10 @@ const group_settings = {prefix: prefix+'group-', blockName: blockName+'-group', 
 			type: 'number',
 			default: 2,
 		},
+		layout: {
+			type: 'string',
+			default: 'horisontal',
+		},
 	};
 
 	wp.blocks.registerBlockType( blockName, {
@@ -170,7 +174,7 @@ const group_settings = {prefix: prefix+'group-', blockName: blockName+'-group', 
 		attributes,
 
         supports: {
-			align: ['wide', 'full'],
+			align: ['wide'],
 			color: {
 				gradients: true,
 			},
@@ -182,8 +186,9 @@ const group_settings = {prefix: prefix+'group-', blockName: blockName+'-group', 
 		edit: props => {
             let style = {};
             style['--cols'] = `${props.attributes.columns || attributes.columns.default}`;
+			const layout = props.attributes.layout || attributes.layout.default;
 			return el( 'div',
-				{ className: `${props.className} ${prefix}main ${style['--cols'] > 2 ? 'stretched-layout' : ''}`, style },
+				{ className: `${props.className} ${prefix}main ${prefix}layout-${layout}`, style },
 				el( wp.blockEditor.InnerBlocks, {
                     allowedBlocks: [
                         'fc-gutenberg-blocks/lanuwa-vertical-videos'
@@ -208,6 +213,17 @@ const group_settings = {prefix: prefix+'group-', blockName: blockName+'-group', 
 								min: 1,
 								max: 4
 							}),
+							el(wp.components.SelectControl, {
+								label: 'Layout',
+								value: layout,
+								options: [
+									{ value: 'horisontal', label: 'Horisontal' },
+									{ value: 'vertical', label: 'Vertical' },
+								],
+								onChange: value => {
+									props.setAttributes({ layout: value });
+								},
+							}),
 						)
 					),
 				)
@@ -216,8 +232,9 @@ const group_settings = {prefix: prefix+'group-', blockName: blockName+'-group', 
 		save: props => {
 			let style = {};
 			style['--cols'] = `${props.attributes.columns || attributes.columns.default}`;
+			const layout = props.attributes.layout || attributes.layout.default;
 			return el( 'div',
-				{ className: `${prefix}main ${style['--cols'] > 2 ? `${prefix}stretched` : ``}`, style },
+				{ className: `${prefix}main ${prefix}layout-${layout}`, style },
                 el( wp.blockEditor.InnerBlocks.Content ),
             );
 		},

@@ -5,7 +5,6 @@
     --colwidth: calc((100% - ((var(--cols) - 1) * var(--colgap))) / var(--cols));
     --sideImage: linear-gradient(45deg, #999 -12%, #eee 50%, #999 112%);
     --sideSelected: linear-gradient(45deg, var(--wp--preset--color--light-green-cyan) -12%, #eee 50%, var(--wp--preset--color--light-green-cyan) 112%);
-    
 }
 .fc-lanuwa-vertical-videos-group-main > .block-editor-inner-blocks > .block-editor-block-list__layout {
     display: flex;
@@ -47,6 +46,7 @@
 .fc-lanuwa-vertical-videos-main > .video > div {
     display: block;
     width: 100%;
+    min-width: 150px;
     height: auto;
     padding: 0 0 calc(16 * 100% / 9);
 }
@@ -62,24 +62,28 @@
     background: var(--sideSelected);
 }
 
-/* many columns */
-.fc-lanuwa-vertical-videos-group-main.stretched-layout .fc-lanuwa-vertical-videos-main {
+/* vertical layout */
+.fc-lanuwa-vertical-videos-group-layout-vertical .fc-lanuwa-vertical-videos-main {
     flex-direction: column-reverse;
     margin: 0 auto;
     padding: 0;
     max-width: 320px;
 }
-.fc-lanuwa-vertical-videos-group-main.stretched-layout .fc-lanuwa-vertical-videos-main > .block-editor-inner-blocks {
+.fc-lanuwa-vertical-videos-group-layout-vertical .fc-lanuwa-vertical-videos-main > .block-editor-inner-blocks {
     max-width: 94%;
 }
-.fc-lanuwa-vertical-videos-group-main.stretched-layout .fc-lanuwa-vertical-videos-main > .block-editor-inner-blocks > .block-editor-block-list__layout {
+.fc-lanuwa-vertical-videos-group-layout-vertical .fc-lanuwa-vertical-videos-main > .block-editor-inner-blocks > .block-editor-block-list__layout {
     display: flex;
     flex-direction: column;
     height: 100%;
 }
-.fc-lanuwa-vertical-videos-group-main.stretched-layout .fc-lanuwa-vertical-videos-main > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block-button,
-.fc-lanuwa-vertical-videos-group-main.stretched-layout .fc-lanuwa-vertical-videos-main > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block-buttons {
+.fc-lanuwa-vertical-videos-group-layout-vertical .fc-lanuwa-vertical-videos-main > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block-button,
+.fc-lanuwa-vertical-videos-group-layout-vertical .fc-lanuwa-vertical-videos-main > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block-buttons {
     margin-top: auto;
+}
+
+.fc-lanuwa-vertical-videos-group-layout-vertical .fc-lanuwa-vertical-videos-main > .video {
+    flex: 0;
 }
 
 
