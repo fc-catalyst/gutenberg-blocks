@@ -23,7 +23,7 @@
 }
 
 /* fixng aligning */
-.fc-lanuwa-group-imgbg-main .block-editor-block-list__layout > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+.fc-lanuwa-group-imgbg-main > .block-editor-inner-blocks > .block-editor-block-list__layout > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
     max-width: var(--wp--style--global--content-size);
     margin-left: auto !important;
     margin-right: auto !important;
