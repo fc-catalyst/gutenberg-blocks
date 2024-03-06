@@ -110,7 +110,7 @@
 					el( wp.blockEditor.InspectorControls, {},
 						el( wp.components.PanelBody, { className: `${prefix}main`, style },
 							el( wp.components.RangeControl, {
-								label: 'Image Width (px)',
+								label: 'Block Width (px)',
 								value: props.attributes.blockWidth || attributes.blockWidth.default,
 								onChange: value => {
 									props.setAttributes( { blockWidth: value } );
