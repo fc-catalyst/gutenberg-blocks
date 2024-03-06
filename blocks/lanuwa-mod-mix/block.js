@@ -1,6 +1,16 @@
 (() => {
 
-    const effected_blocks = ['core/columns'];
+    const effected_blocks = [
+        'core/columns',
+        'core/group',
+        'fc-gutenberg-blocks/lanuwa-author-box',
+        'fc-gutenberg-blocks/lanuwa-group-imgbg',
+        'fc-gutenberg-blocks/lanuwa-infobox',
+        'fc-gutenberg-blocks/lanuwa-tip',
+        'fc-gutenberg-blocks/lanuwa-toc',
+        'fc-gutenberg-blocks/lanuwa-vertical-videos',
+        'fc-gutenberg-blocks/lanuwa-youtube',
+    ];
 
     const addClass = (classNames, classNameToAdd) => {
         const classes = classNames?.split(' ') || [];
