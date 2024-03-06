@@ -11,8 +11,14 @@
 .fc-lanuwa-toc-main > li {
     flex-basis: calc(50% - calc(var(--gap) * 1.2 / 2));
     display: flex;
+    overflow: auto;
     list-style: none;
     border: 1px solid var(--wp--preset--color--primary);
+}
+@media screen and (max-width: 767px) {
+    .fc-lanuwa-toc-main > li {
+        flex-basis: 100%;
+    }
 }
 .fc-lanuwa-toc-main > li > a {
     flex-basis: 100%;
