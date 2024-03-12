@@ -1,7 +1,7 @@
 .fc-lanuwa-toc-main {
     --gap: 20px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
     column-gap: calc(var(--gap) * 1.2 );
     row-gap: var(--gap);
