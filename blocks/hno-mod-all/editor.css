@@ -1,0 +1,20 @@
+@media (max-width:781px) {
+    .hide-on-mobile {
+        opacity: .3;
+    }
+}
+.add-shadow {
+    box-shadow: 0px 3px 30px 0px #0000000D;
+}
+
+/* buttons fixes.. where else */
+.wp-block-buttons .wp-block-button > div {
+    text-align: left;
+}
+.wp-block-buttons.is-content-justification-center .wp-block-button > div,
+.wp-block-buttons.is-content-justification-space-between .wp-block-button > div {
+    text-align: center;
+}
+.wp-block-buttons.is-content-justification-right .wp-block-button > div {
+    text-align: right;
+}
