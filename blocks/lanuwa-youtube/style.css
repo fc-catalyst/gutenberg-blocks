@@ -1,0 +1,52 @@
+.fc-lanuwa-youtube-video {
+    position: relative;
+}
+.fc-lanuwa-youtube-video::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: auto;
+    padding-bottom: calc(100% * 9 / 16);
+}
+.fc-lanuwa-youtube-video > iframe {
+    position: absolute;
+    inset: 0 0 0 0;
+    width: 100%;
+    height: 100%;
+}
+
+.fc-lanuwa-youtube-timemarks {
+    --gap: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: var(--gap);
+    row-gap: 0;
+    margin: 20px 0 0;
+    padding: 0;
+}
+.fc-lanuwa-youtube-timemarks > li {
+    flex-basis: calc(50% - (var(--gap) / 2));
+    list-style: none !important;
+    margin: 0 0 6px;
+    padding: 0;
+}
+.fc-lanuwa-youtube-timemarks > li button {
+    display: block;
+    width: 100%;
+    appearance: none;
+    background: none;
+    border: none;
+    padding: 0;
+    text-align: left;
+}
+.fc-lanuwa-youtube-timemarks > li button:hover,
+.fc-lanuwa-youtube-timemarks > li button:focus {
+    color: #666;
+}
+.fc-lanuwa-youtube-timemarks > li span {
+    padding-right: 12px;
+    color: #c17600;
+}
+.fc-lanuwa-youtube-timemarks > li button:hover span {
+    color: #f29400;
+}

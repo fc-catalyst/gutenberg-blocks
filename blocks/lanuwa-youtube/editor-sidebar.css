@@ -1,0 +1,39 @@
+.fc-lanuwa-youtube-mark {
+    display: flex;
+    position: relative;
+}
+.fc-lanuwa-youtube-mark > * {
+    margin-bottom: 0 !important;
+}
+.fc-lanuwa-youtube-mark:not(:first-child) label {
+    display: none;
+}
+.fc-lanuwa-youtube-title {
+    flex: 1;
+}
+.fc-lanuwa-youtube-time {
+    flex: 0;
+    flex-basis: calc( 5ch + 20px );
+}
+
+.fc-lanuwa-youtube-add {
+    display: block !important;
+    margin: 10px auto !important;
+}
+
+.fc-lanuwa-youtube-delete {
+    position: absolute;
+    bottom: 0;
+    right: -15px;
+    z-index: 1;
+    appearance: none;
+    font-size: 20px;
+    line-height: 1;
+    border-radius: 50%;
+    border: none;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+.fc-lanuwa-youtube-delete:hover {
+    color: red;
+}
