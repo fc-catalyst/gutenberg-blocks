@@ -1,116 +1,48 @@
-!function(){let a=setInterval(function(){let b=document.readyState;if(b!=='complete'&&b!=='interactive'||typeof jQuery==='undefined'){return}const $=jQuery;clearInterval(a);a=null;
+!function(){let a=setInterval(function(){let b=document.readyState;if(b!=='complete'&&b!=='interactive'){return}clearInterval(a);a=null;
 
-/*
+    // youtube video exists
+    if ( !document.querySelector('.fc-lanuwa-youtube-video > iframe') ) { return } // make wait for the borlabs case
+
+    // youtube api
     const api_script = document.createElement('script');
     api_script.src = 'https://www.youtube.com/iframe_api';
-    document.append(api_script);
+    document.body.appendChild(api_script);
 
-    player = $(e.target).parents('.fc-lanuwa-youtube-main').find('iframe')[0];
+    // init all players
+    window.onYouTubeIframeAPIReady = () => {
+        document.querySelectorAll('.fc-lanuwa-youtube-video').forEach( player_holder => {
 
-    $('.fc-lanuwa-youtube-timemarks button').on('click', e => {
-        console.log('works');
-        seekTo(30);
-    });
+            // organize the replacement for printing new player
+            const iframe = player_holder.querySelector('iframe');
+            const victim = document.createElement('div');
+            player_holder.replaceChild(victim, iframe);
 
-/*
-var player;
+            // print the player iframe
+            const id = player_holder.getAttribute('data-id');
+            const player = new YT.Player( victim, {
+                width: '560',
+                height: '315',
+                videoId: id,
+                playerVars: {
+                    'playsinline': 1
+                }
+            });
 
-// This function creates an <iframe> (and YouTube player)
-// after the API code downloads.
-function onYouTubeIframeAPIReady() {
-    player = new YT.Player( $(e.target).parents('.fc-lanuwa-youtube-main').find('iframe')[0], {
-        events: {
-            'onReady': onPlayerReady
-        }
-    });
-}
+            // add the scroll buttons events
+            player_holder.nextSibling.querySelectorAll('button').forEach( button => {
+                button.addEventListener( 'click', e => {
+                    const seekTo = button.querySelector('span').innerText;
+                    player.seekTo( time_to_seconds(seekTo), true );
+                    player.playVideo();
+                });
+            });
 
-function onPlayerReady(event) {
-    // Event listener for when player is ready
-}
-
-// Function to scroll to a specific time mark in the YouTube video
-function scrollToTime(seconds) {
-    if(player != null) {
-        player.seekTo(seconds, true);
-    }
-}
-
-$('.fc-lanuwa-youtube-timemarks button').on('click', e => {
-    console.log('works');
-    scrollToTime(30);
-});
-
-/*
-    const api_script = document.createElement('script');
-    api_script.src = 'https://www.youtube.com/iframe_api';
-    document.append(api_script);
-
-    $('.fc-lanuwa-youtube-timemarks button').on('click', e => {
-        const iframe = $(e.target).parents('.fc-lanuwa-youtube-main').find('iframe')[0];
-        player = new YT.Player(iframe, {
-            events: {
-                'onReady': onPlayerReady
-            }
         });
-        if( player != null ) {
-            player.seekTo(100, true);
-        }        
-    });
-//*/
-/*
-    const scrollToTime = seconds => {
-        $().parents('.fc-lanuwa-youtube-main');
-        player = document.getElementById('youtube-video');
-        if(player != null) {
-            player.contentWindow.postMessage('{"event":"command","func":"' + 'seekTo' + '","args":[' + seconds + ',"true"]}', '*');
-        }
     }
-//*/
-    generateYoutubePlayer();
-    $('.fc-lanuwa-youtube-timemarks button').on('click', e => {
-        scrollToTime(100);
-    });
+
+    const time_to_seconds = time => {
+        const [minutes, seconds] = time.split(':').map(Number);
+        return minutes * 60 + seconds;
+    };
+
 }, 300 )}();
-
-
-var player;
-
-// Function to generate the YouTube iframe
-function generateYoutubePlayer() {
-    var placeholder = document.getElementById('player-placeholder');
-    if (placeholder) {
-        var iframe = document.createElement('iframe');
-        iframe.src = 'https://www.youtube.com/embed/-ffRvuRRVEE?enablejsapi=1';
-        iframe.width = '560';
-        iframe.height = '315';
-        iframe.id = 'youtube-video';
-        iframe.frameborder = '0';
-        iframe.allowfullscreen = true;
-        placeholder.appendChild(iframe);
-
-        // Initialize the player after the iframe has been generated
-        initPlayer();
-    }
-}
-
-// Initialize the YouTube player
-function initPlayer() {
-    player = new YT.Player('youtube-video', {
-        events: {
-            'onReady': onPlayerReady
-        }
-    });
-}
-
-// Event listener for when player is ready
-function onPlayerReady(event) {
-    // Player is ready
-}
-
-// Function to scroll to a specific time mark in the YouTube video
-function scrollToTime(seconds) {
-    if(player != null) {
-        player.seekTo(seconds, true);
-    }
-}
