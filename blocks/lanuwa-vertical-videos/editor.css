@@ -57,6 +57,14 @@
     text-align: center;
     line-height: 1.5;
 }
+.fc-lanuwa-vertical-videos-main > .video > div > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
 
 .fc-lanuwa-vertical-videos-main > .video.video-selected {
     background: var(--sideSelected);

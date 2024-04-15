@@ -102,9 +102,11 @@
                     templateLock: false,
                 }),
 				el( 'div', {className: `video ${video_selected ? `video-selected` : ``}`},
-					props.attributes.medias[0]?.url
-						? el( 'img', { src: props.attributes.medias[0].url, alt: 'Video Preview' } )
-						: el( 'div', {}, el( 'span', {}, video_selected ? 'Video selected' : 'Video not selected' ) )
+					el( 'div', {}, 
+						props.attributes.medias[0]?.url
+							? el( 'img', { src: props.attributes.medias[0].url, alt: 'Video Preview' } )
+							: el( 'span', {}, video_selected ? 'Video selected' : 'Video not selected' )
+					)
 				),
 				
 				el( wp.element.Fragment, // sidebar
