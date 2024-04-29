@@ -1,3 +1,8 @@
+[class*='fc-lanuwa-mod-button-'] {
+    --mailto: url('/wp-content/themes/lanuwa/images/share/ico-envelope.svg');
+    --tel: url('/wp-content/themes/lanuwa/images/share/phone-call.svg');
+}
+
 [class*='fc-lanuwa-mod-button-'] > div::before {
     content: '';
     display: inline-block;
@@ -5,16 +10,21 @@
     height: 18px;
     min-width: 18px;
     margin-right: 12px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    filter: brightness(0) invert();
+    background-color: currentColor;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-position: center;
+    mask-size: contain;
+    -webkit-mask-size: contain;
 }
 
 .fc-lanuwa-mod-button-mailto > div::before {
-    background-image: url('/wp-content/themes/lanuwa/images/share/ico-envelope.svg');
+    mask-image:var(--mailto);
+    -webkit-mask-image:var(--mailto);
 }
 
 .fc-lanuwa-mod-button-tel > div::before {
-    background-image: url('/wp-content/themes/lanuwa/images/share/phone-call.svg');
+    mask-image:var(--tel);
+    -webkit-mask-image:var(--tel);
 }
