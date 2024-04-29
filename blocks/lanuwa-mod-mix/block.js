@@ -10,6 +10,7 @@
         'fc-gutenberg-blocks/lanuwa-toc',
         'fc-gutenberg-blocks/lanuwa-vertical-videos',
         'fc-gutenberg-blocks/lanuwa-youtube',
+        'fc-gutenberg-blocks/lanuwa-contact-section',
     ];
 
     const addClass = (classNames, classNameToAdd) => {
