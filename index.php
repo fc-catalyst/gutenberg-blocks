@@ -161,31 +161,31 @@ function enqueue_files($dir, $print_function = null) {
   // there is no easy way to defer style, so style-defer.css is skipped
 
   // block script
-  $block_file_path = $block_dir_src . '/script.css';
+  $block_file_path = $block_dir_src . '/script.js';
   if ( file_exists( $block_file_path ) ) {
     add_action( 'wp_enqueue_scripts', function() use ($block_name, $block_dir_url) {
 
       if ( !can_enqueue($block_name) ) { return; }
 
-      wp_register_script( $block_name, $block_dir_url.'/script.css', [], FCGB_VER );
+      wp_register_script( $block_name, $block_dir_url.'/script.js', [], FCGB_VER );
       wp_enqueue_script( $block_name );
     });
   }
 
   // block script defer
-  $block_file_path = $block_dir_src . '/script-defer.css';
+  $block_file_path = $block_dir_src . '/script-defer.js';
   if ( file_exists( $block_file_path ) ) {
     add_action( 'wp_enqueue_scripts', function() use ($block_name, $block_dir_url) {
 
       if ( !can_enqueue($block_name) ) { return; }
 
-      wp_register_script( $block_name, $block_dir_url.'/script.css', [], FCGB_VER, ['strategy' => 'defer'] );
+      wp_register_script( $block_name, $block_dir_url.'/script-defer.js', [], FCGB_VER, ['strategy' => 'defer'] );
       wp_enqueue_script( $block_name );
     });
   }
 
   // block script inline
-  $block_file_path = $block_dir_src . '/script-inline.css';
+  $block_file_path = $block_dir_src . '/script-inline.js';
   if ( file_exists( $block_file_path ) ) {
     add_action( 'wp_enqueue_scripts', function() use ($block_file_path, $block_name) {
 
