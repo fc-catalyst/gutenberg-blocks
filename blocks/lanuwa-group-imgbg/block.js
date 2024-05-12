@@ -52,7 +52,8 @@
                 const newImage = {
                     id: media.id,
                     url: media.url,
-					thumbnail: media.sizes.large ? media.sizes.large.url : media.url, // .thumbnail
+					thumbnail: media.sizes.large ? media.sizes.large.url : media.url,
+					sizes: media.sizes,
                 };
                 images[ind] = newImage;
                 props.setAttributes({ images });
@@ -139,20 +140,18 @@
 			);
 		},
 		save: props => {
-			const imageId = props.attributes.images[0]?.id;
-			const imageSizes = wp.data.select('core').getMedia(imageId)?.media_details?.sizes;
-			const srcSet = [];
-		
-			if (imageSizes) {
-				for (const size in imageSizes) {
-					const imageUrl = imageSizes[size].source_url;
-					const imageSize = imageSizes[size].width;
-					srcSet.push(`${imageUrl} ${imageSize}w`);
-				}
-			}
+			const srcset = Object.entries( props.attributes.images[0]?.sizes || {} )?.map(a => `${a[1].url} ${a[1].width}w`)?.join(', ') || null;
+			
+			const block_sizes = { '': 820, 'wide': 1140 };
+			const sizes = srcset && [
+				`(max-width: 767px) 100vw`,
+				props.attributes.align !== `full` ? `(max-width: ${block_sizes[props.attributes.align]}px) ${props.attributes.imgWidth}vw` : null,
+				props.attributes.align !== `full` ? `${Math.round(props.attributes.imgWidth * block_sizes[props.attributes.align] / 100)}px)` : null,
+				props.attributes.align === `full` ? `${props.attributes.imgWidth}vw` : null,
+			].filter(a => a !== null).join(', ') || null;
 		
 			const image = props.attributes.images[0]?.url
-				? el('img', { src: props.attributes.images[0].url, srcset: srcSet.join(', '), sizes: '100vw', alt: 'Background image' })
+				? el('img', { src: props.attributes.images[0].url, srcset, sizes, alt: 'Background image' })
 				: null;
 		
 			const span = image && !props.attributes.link

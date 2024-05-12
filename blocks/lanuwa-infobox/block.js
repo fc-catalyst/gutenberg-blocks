@@ -6,10 +6,6 @@
 			type: 'array',
 			default: [],
 		},
-		align: {
-			type: 'string',
-			default: 'full',
-		},
 		blockWidth: {
 			type: 'number',
 			default: 890,
@@ -31,7 +27,6 @@
 		attributes,
 
         supports: {
-			align: ['wide', 'full'],
 			color: {
 				gradients: true,
 			},
@@ -48,7 +43,8 @@
                 const newImage = {
                     id: media.id,
                     url: media.url,
-					thumbnail: media.sizes.large ? media.sizes.large.url : media.url, // .thumbnail
+					thumbnail: media.sizes.large ? media.sizes.large.url : media.url,
+					sizes: media.sizes,
                 };
                 images[ind] = newImage;
                 props.setAttributes({ images });
@@ -125,33 +121,26 @@
 			);
 		},
 		save: props => {
-			const imageId = props.attributes.images[0]?.id;
-			const imageSizes = wp.data.select('core').getMedia(imageId)?.media_details?.sizes;
-			const srcSet = [];
-		
-			if (imageSizes) {
-				for (const size in imageSizes) {
-					const imageUrl = imageSizes[size].source_url;
-					const imageSize = imageSizes[size].width;
-					srcSet.push(`${imageUrl} ${imageSize}w`);
-				}
-			}
-		
+			const srcset = Object.entries( props.attributes.images[0]?.sizes || {} )?.map(a => `${a[1].url} ${a[1].width}w`)?.join(', ') || null;
+			const sizes = srcset && [
+				`(max-width: 767px) 0px`,
+				`280px`,
+			].filter(a => a !== null).join(', ') || null;
+
 			const image = props.attributes.images[0]?.url
-				? el('img', { src: props.attributes.images[0].url, srcset: srcSet.join(', '), sizes: '100vw', alt: 'Side image' })
+				? el( 'img', { src: props.attributes.images[0].url, srcset, sizes, alt: 'Side image' } )
 				: null;
-		
 			const span = image && !props.attributes.link
-				? el('span', { className: `${prefix}image` }, image)
+				? el( 'span', { className: `${prefix}image` }, image )
 				: null;
-		
+
 			let style = {};
-			if (props.attributes.blockWidth) { style['--blockWidth'] = `${props.attributes.blockWidth}px`; }
-			return el('div',
+			if ( props.attributes.blockWidth ) { style['--blockWidth'] = `${props.attributes.blockWidth || attributes.blockWidth.default}px`; }
+			return el( 'div',
 				{ className: `${prefix}main`, style },
 				span,
-				el(wp.blockEditor.InnerBlocks.Content),
-			);
-		},		
+                el( wp.blockEditor.InnerBlocks.Content ),
+            );
+		},
 	} );
 })();
