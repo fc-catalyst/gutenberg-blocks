@@ -139,21 +139,34 @@
 			);
 		},
 		save: props => {
+			const imageId = props.attributes.images[0]?.id;
+			const imageSizes = wp.data.select('core').getMedia(imageId)?.media_details?.sizes;
+			const srcSet = [];
+		
+			if (imageSizes) {
+				for (const size in imageSizes) {
+					const imageUrl = imageSizes[size].source_url;
+					const imageSize = imageSizes[size].width;
+					srcSet.push(`${imageUrl} ${imageSize}w`);
+				}
+			}
+		
 			const image = props.attributes.images[0]?.url
-				? el( 'img', { src: props.attributes.images[0].url, alt: 'Background image' } )
+				? el('img', { src: props.attributes.images[0].url, srcset: srcSet.join(', '), sizes: '100vw', alt: 'Background image' })
 				: null;
+		
 			const span = image && !props.attributes.link
-				? el( 'span', { className: `${prefix}image` }, image )
+				? el('span', { className: `${prefix}image` }, image)
 				: null;
-
+		
 			let style = {};
-			if ( props.attributes.imgWidth ) { style['--imgWidth'] = `${props.attributes.imgWidth || attributes.imgWidth.default}%`; }
-			if ( props.attributes.imgPosition ) { style['--imgPosition'] = `${props.attributes.imgPosition || attributes.imgPosition.default}%`; }
-			return el( 'div',
+			if (props.attributes.imgWidth) { style['--imgWidth'] = `${props.attributes.imgWidth}%`; }
+			if (props.attributes.imgPosition) { style['--imgPosition'] = `${props.attributes.imgPosition}%`; }
+			return el('div',
 				{ className: `${prefix}main`, style },
+				el(wp.blockEditor.InnerBlocks.Content),
 				span,
-                el( wp.blockEditor.InnerBlocks.Content ),
-            );
+			);
 		},
 	} );
 })();

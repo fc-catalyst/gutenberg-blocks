@@ -125,20 +125,33 @@
 			);
 		},
 		save: props => {
+			const imageId = props.attributes.images[0]?.id;
+			const imageSizes = wp.data.select('core').getMedia(imageId)?.media_details?.sizes;
+			const srcSet = [];
+		
+			if (imageSizes) {
+				for (const size in imageSizes) {
+					const imageUrl = imageSizes[size].source_url;
+					const imageSize = imageSizes[size].width;
+					srcSet.push(`${imageUrl} ${imageSize}w`);
+				}
+			}
+		
 			const image = props.attributes.images[0]?.url
-				? el( 'img', { src: props.attributes.images[0].url, alt: 'Side image' } )
+				? el('img', { src: props.attributes.images[0].url, srcset: srcSet.join(', '), sizes: '100vw', alt: 'Side image' })
 				: null;
+		
 			const span = image && !props.attributes.link
-				? el( 'span', { className: `${prefix}image` }, image )
+				? el('span', { className: `${prefix}image` }, image)
 				: null;
-
+		
 			let style = {};
-			if ( props.attributes.blockWidth ) { style['--blockWidth'] = `${props.attributes.blockWidth || attributes.blockWidth.default}px`; }
-			return el( 'div',
+			if (props.attributes.blockWidth) { style['--blockWidth'] = `${props.attributes.blockWidth}px`; }
+			return el('div',
 				{ className: `${prefix}main`, style },
 				span,
-                el( wp.blockEditor.InnerBlocks.Content ),
-            );
-		},
+				el(wp.blockEditor.InnerBlocks.Content),
+			);
+		},		
 	} );
 })();
