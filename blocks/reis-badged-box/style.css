@@ -23,7 +23,7 @@
         position: static;
     }
 }
-.fc-reis-badged-box-image > img {
+.fc-reis-badged-box-image img {
     width: 140px;
     height: auto;
 }
