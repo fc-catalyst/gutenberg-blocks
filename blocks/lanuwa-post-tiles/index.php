@@ -30,7 +30,4 @@
     <?php endif ?>
 <?php endforeach ?>
 </section>
-<pre>
-    <?php print_r( $ids ) ?>
-</pre>
 <?php };
