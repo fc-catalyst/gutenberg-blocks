@@ -1,2 +1,0 @@
-<?php
-/* ++DELETE AFTER CUSTOM BLOCK IS READY */ 
