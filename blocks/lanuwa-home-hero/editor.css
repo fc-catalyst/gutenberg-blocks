@@ -1,0 +1,16 @@
+[data-type$="lanuwa-home-hero"] {
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px dotted red;
+}
+
+.fc-lanuwa-home-hero-main {
+    --backgroundImage: linear-gradient(45deg, #999 -12%, #eee 50%, #999 112%);
+}
+
+.fc-lanuwa-home-hero-main *:first-child {
+    margin-top: 0 !important;
+}
+.fc-lanuwa-home-hero-main *:last-child {
+    margin-bottom: 0 !important;
+}
