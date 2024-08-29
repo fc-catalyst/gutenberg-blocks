@@ -4,7 +4,23 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 40px var(--hgap);
+    gap: 60px var(--hgap);
+}
+
+@media (max-width: 1170px) {
+    .post-tiles {
+        padding: 0 20px;
+    }
+}
+@media (max-width: 980px) {
+    .post-tiles {
+        --cols: 2;
+    }
+}
+@media (max-width: 670px) {
+    .post-tiles {
+        --cols: 1;
+    }
 }
 
 .post-tiles > * {
@@ -19,6 +35,11 @@
     position: relative;
     aspect-ratio: 1 / 1;
     background-color: #fff4eb;
+}
+@media (max-width: 670px) {
+    .post-tile-image {
+        aspect-ratio: 3 / 2;
+    }
 }
 .post-tile-image::after {
     content: '';
