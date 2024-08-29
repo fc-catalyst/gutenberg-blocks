@@ -63,7 +63,7 @@ function enqueue_files($dir, $print_function = null) {
 
       $print_block = function($props, $content = null) use ($block_name, $block_type_name, $print_function) {
           ob_start();
-          $print_function($props, $content = null, $block_name);
+          $print_function($props, $content, $block_name);
           $content = ob_get_contents();
           ob_end_clean();
           return $content;
