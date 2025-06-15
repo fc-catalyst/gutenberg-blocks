@@ -54,6 +54,7 @@
                     wp.element.Fragment,
                     {},
                     el(BlockEdit, props),
+                    toggle(props, 'remove-white-bg', 'Remove white background'),
                     toggle(props, 'standout-left-1', 'Standout left 1'),
                 );
             };

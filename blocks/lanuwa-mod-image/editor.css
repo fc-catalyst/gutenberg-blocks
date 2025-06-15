@@ -3,3 +3,7 @@
         transform: translateX(-54px);
     }
 }
+.remove-white-bg {
+    filter: grayscale(100%);
+    mix-blend-mode: darken;
+}
