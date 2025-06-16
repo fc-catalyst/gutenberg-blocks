@@ -1,0 +1,10 @@
+.fc-lanuwa-tabs-tab-main {
+    background-color: white;
+    border-radius: 12px;
+    padding: 10px;
+}
+.fc-lanuwa-tabs-tab-main input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}

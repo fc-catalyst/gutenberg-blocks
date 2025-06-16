@@ -1,0 +1,15 @@
+.fc-lanuwa-tabs-main {
+    border: 1px dotted #f29400;
+    padding:20px 10px;
+    background-color: #f2f2f2;
+}
+.fc-lanuwa-tabs-main::before {
+    content: 'Tabs:';
+    color: #f29400;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.25;
+    position: absolute;
+    left: 0;
+    top:0;
+}
