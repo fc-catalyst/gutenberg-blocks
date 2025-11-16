@@ -25,7 +25,7 @@ if( $custom_query->have_posts() ):
             <div class="col-xs-12 col-sm-8">
                 <h2><?php echo str_replace( '//', '', get_the_title() ) ?></h2>
                 <p><?php echo str_replace( '[&hellip;]', '&hellip;', get_the_excerpt() ) ?></p>
-                <p><a href="<?php the_permalink() ?>" class="btn btn-base">Mehr erfahren</a></p>
+                <p><a href="<?php the_permalink() ?>" class="btn btn-brand btn-lg">Mehr erfahren</a></p>
             </div>
         </div>
     </div>
